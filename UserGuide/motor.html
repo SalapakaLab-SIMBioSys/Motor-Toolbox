@@ -1,0 +1,3117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>motor API documentation</title>
+<meta name="description" content="Created on Mon Dec 30 16:23:21 2019 …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>motor</code></h1>
+</header>
+<section id="section-intro">
+<p>Created on Mon Dec 30 16:23:21 2019</p>
+<p>Author: Rachit Shrivastava</p>
+<p>MEASURE SYSTEM
+nm for length
+M for concentration
+Kg for weight
+s for second
+K for temperature
+nN for force</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python"># -*- coding: utf-8 -*-
+&#34;&#34;&#34;
+Created on Mon Dec 30 16:23:21 2019
+
+Author: Rachit Shrivastava
+
+MEASURE SYSTEM
+nm for length
+M for concentration
+Kg for weight
+s for second
+K for temperature
+nN for force
+
+&#34;&#34;&#34;
+
+#==============================================================================
+# Importing packages
+#==============================================================================
+import numpy as np
+import scipy as sp
+from scipy import sparse
+import copy
+from itertools import groupby
+#import pylab as pl
+#import matplotlib.pyplot as plt
+#import time as time
+
+
+#==============================================================================
+# Class for motors
+#==============================================================================
+
+class motorClass:
+    #==========================================================================
+    # Class Variables
+    #==========================================================================
+    
+    # Physical parameters
+    Kb = 1.3806503e-5; # Boltzmann constant in nm^2 kg s^(-2) K^(-1)
+    T = 300 # Temperature in Kelvin
+    # ATP = 2e-3 # ATP concentration in M
+
+    # Bio-chemo-mechanical motion parameters
+    kcat = 105 # s^(-1)
+    kon = 2e6 # M^(-1) s^(-1)
+    k0off = 55 # s^(-1)
+    
+    # Microtubule properties and binding Bio-chemo-mechanical parameters
+    ds = 8 # Periodicity of MT filament in nm
+    dl = 1.6 # nm find explanation for this
+    delta_l = 1.3 # nm find explanation for this
+    A = 107 # Mean step number
+    B = 0.029e-6 # M
+    Pback = 2 # Find explanation for this
+    
+    # Bead parameters (May be used later)
+    bead_r = 250 # Bead radius in nm
+    eta = 0.89e-12; # Coefficient of viscosity for water in Kg/(s nm)
+    Xi = 6*np.pi*eta*bead_r # Friction force Kg/s
+    D = Kb*T/Xi ; # nm^2/s
+    
+    #==========================================================================
+    # Init Function
+    #==========================================================================
+    
+    def __init__(self, l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type):
+        
+        self.l0 = l0
+        self.Kel = Kel
+        self.Fs = Fs
+        self.ATP = ATP
+        self.Pattach = Pattach
+        self.K_Pd = K_Pd # This is the constant multiplier for Pdetach = K_Pd * Pstep
+        self.Pback = Pback
+        self.motor_type = motor_type
+   
+    #==========================================================================
+    # Probability of stepping
+    # (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def Pstep_2sided(self, Fm):
+        if abs(Fm) &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+            P = 0 # Probability of stepping is 0 for force beyond stall force
+            epsilon = 0
+            return [P, epsilon]
+        
+        # if Fm &lt; 0 and Fm &gt; -1*self.Fs: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+        #     Fm = 0
+        
+        koff = self.k0off * np.exp( (abs(Fm)*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+        km = (self.kcat+koff)/self.kon # M
+        epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+        
+        P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+        
+        P = P*epsilon
+        # if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+        #     P = P*epsilon
+        
+        return [P, epsilon]
+    
+    def Pstep_1sided(self, Fm):
+        if Fm &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+            P = 0 # Probability of stepping is 0 for force beyond stall force
+            epsilon = 0
+            return [P, epsilon]
+        
+        if Fm &lt; 0: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+            Fm = 0
+        
+        koff = self.k0off * np.exp( (Fm*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+        km = (self.kcat+koff)/self.kon # M
+        epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+        
+        P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+        
+        if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+            P = P*epsilon
+        
+        return [P, epsilon]
+    
+    #==========================================================================
+    # Probability of detachment 
+    # (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def Pdetach_old(self, Fm):
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            #P1 = self.B/self.ATP #This is not being used anythere.
+            P2 = (1/self.A)* np.exp(  (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+            
+            P = (((self.ATP/P2)/(self.ATP +self.B*(1+1/P2)))**(-1)) * self.Pstep(Fm)[0]
+            
+            P = max(P,self.Pback)
+        return P
+      
+    def Pdetach_2sided(self, Fm):
+        # k = 0.04 #Original rate from paper
+        # k = 0.01
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            P = self.K_Pd * self.Pstep_2sided(Fm)[0]
+            P = max(P,self.Pback)
+        return P
+    
+    def Pdetach_1sided(self, Fm):
+        # k = 0.04 #Original rate from paper
+        # k = 0.01
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            P = self.K_Pd * self.Pstep_1sided(Fm)[0]
+            P = max(P,self.Pback)
+        return P
+    
+    #==========================================================================
+    # Efficiency (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def efficiency(self, Fm):
+        if Fm &lt; 0:
+            Fm = 0
+            
+        e = 1-(Fm/self.Fs)**2
+        
+        
+        
+        if Fm &gt; self.Fs:
+            e = 0
+        
+        e = e*90/100+10/100*np.exp(-2*(Fm/self.Fs)**2) # Comment if not required. Use if a more general expression for efficiency is needed.
+        
+        return e
+    
+    #==========================================================================
+    # Processivity (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    def processivity(self, Fm):
+
+        P2 = (1/self.A)*np.exp( (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+        L = (self.ds*self.ATP/P2)/(self.ATP +self.B*(1+1/P2))
+        
+        return L
+    
+    #==========================================================================
+    # Spring Force (this is dependent on how much the motor is stretched)
+    #==========================================================================
+    def springForce(self, l):
+
+        F = 0
+        if l &gt; self.l0:
+            F = self.Kel * (l - self.l0)
+        
+        if l &lt; -1*self.l0:
+            F = self.Kel * (l + self.l0)
+            
+        return F
+    
+#=============== End of Class motorClass ======================================
+        
+    
+#==============================================================================
+# Defining other relevant functions here
+#==============================================================================
+
+#==============================================================================
+# Function to get a column from a list of lists. This comes in handy when 
+# working with lists instead of matrix
+#==============================================================================
+def getColumn(lol,colNum):
+    column = []
+    for ii in range(0,5):
+        column.append(lol[ii][colNum])
+        
+    return column
+
+#==============================================================================
+# Function to create an object of motorClass
+#==============================================================================
+def createMotor(l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type):
+   k = motorClass(l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type) 
+   return k
+
+#==============================================================================
+# Function to find number of locations (or extent) given max number of motors,
+# rest length, periodicity of filament, stall force, and spring constant
+#==============================================================================
+def Nlocations_old(m,l0,ds,Fs,Kel,Fm):
+    
+    dmax1 = (m*Fs-Fm)/Kel + ds
+    dmax2 = Fm/Kel
+    dmax = max(dmax1,dmax2) + 2*l0
+
+    n = np.ceil(dmax/ds) + 1
+    n = n + 1 # Figure out +1 thing here.
+    
+    return int(n)
+
+def Nlocations(m, motor, Fm):
+    
+    dmax1 = (m*motor.Fs-Fm)/motor.Kel + motor.ds
+    dmax2 = Fm/motor.Kel
+    dmax = max(dmax1,dmax2) + 2*motor.l0
+
+    n = np.ceil(dmax/motor.ds) + 1
+    n = n + 1 # Figure out +1 thing here.
+    
+    return int(n)
+
+#==============================================================================
+# Function to determine number of configurations EXACTLY given m motors 
+# and n locations
+#==============================================================================
+def Nconfiguration(n,m):
+    if m &lt; 0:
+        N = 0
+        
+    elif m == 0:
+        N = 1
+        
+    else:
+        N = 1
+        for ii in range (n,n+m-1):
+            N = N*ii
+        N = N/ np.math.factorial(m-1)
+    return int(N)
+
+    #Easier Implementation
+    # N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))
+    
+#==============================================================================    
+# Function to determine total number of relative configurations EXACTLY
+# given atmost m motors on cargo and n locations
+#==============================================================================
+def Nconfiguration_detach(n,m):
+    N = 0
+    for ii in range (0,m+1):
+        N = N + Nconfiguration(n,ii)
+        
+    return int(N)
+
+
+#==============================================================================    
+# Function to determine the exact state given the code of the state
+# Inputs are code = value from 1 to N (for total N relative configurations)
+# i.e. code = no. of some relative configuration
+# and n = bound on extent
+#==============================================================================
+def code2state(code,n):
+    
+    Ns = n # Bound on extent
+    m = 0
+    
+    while Nconfiguration_detach(n,m) &lt; code:
+        m += 1
+        
+    Nm = m
+    state = np.zeros(Ns, dtype = &#39;int&#39;)
+    
+    if Nm == 0:
+        return state, Nm
+    
+    
+    if Nm != 0:
+        
+        code = code - Nconfiguration_detach(n,m-1) - 1
+        n = n-1
+        
+        k = 1
+        state[0] = 1
+        m = m-1
+        
+        if m &gt; 0:
+            while k &lt;= Ns:
+                N = Nconfiguration(n+1,m)
+                if code &gt;= N:
+                    k = k+1
+                    n = n-1
+                    code = code -N
+                else:
+                    m = m-1
+                    state[k-1] = state[k-1] + 1
+                    
+                if m &lt;= 0:
+                    break
+        state = np.array(state, dtype=&#39;int&#39;)
+        return state, Nm
+
+#==============================================================================    
+# Function which uses the above code2state function to determine the 
+# cargo location number, exact state, stall strength on each motor in that
+# configuration, and cargo position.
+# Inputs are code = value from 1 to N (for total N relative configurations)
+# i.e. code = no. of some relative configuration
+# and n = bound on extent
+# Output = {[Location number on track], [state],[stall strength],}
+#==============================================================================
+def code2fullState(motor,code,n, Fload = 0.0002, tol = 1e-6):
+    
+    locNumber = np.arange(1,n+1,1)
+    
+    state, Nm = code2state(code,n)
+    pos = state2pos(state)
+    
+    forceArray = np.zeros(n)
+    forceLoc = np.where(state &gt; 0)
+    force = np.array(get_force_array(state,Fload,tol))
+    forceArray[forceLoc] = force/motor.Fs  #How strong the force is wrt stall force
+    
+    cargoPos = equilibrium_cargo_modified(motor, pos, Fload)
+    cargoArr = np.zeros(n)
+    cargoLoc = int(cargoPos/motor.ds)
+    if cargoLoc &gt; 0 &amp; cargoLoc &lt;= n:
+        cargoArr[cargoLoc] = 1
+       
+    fullState = {}
+    fullState[&#39;locNumber&#39;] = locNumber
+    fullState[&#39;Configuration&#39;] = state
+    fullState[&#39;forceArray&#39;] = forceArray
+    fullState[&#39;cargoArr&#39;] = cargoArr
+    
+    return np.array([locNumber,state,forceArray,cargoArr]), fullState
+    
+
+
+#==============================================================================
+# Trim State function to obtain a trimmed state
+#==============================================================================   
+def trimState(state):
+    if np.sum(state) == 0:
+        return state
+    
+    else:
+        while state[0] == 0:
+            state = np.append(state[1:], 0)
+        
+        state = np.array(state, dtype=&#39;int&#39;)    
+        return state
+
+
+#==============================================================================    
+# Function to determine the code for a state given the state
+# Input is a state vector
+        
+# N = enumerate_combination_rep(s)
+# s is a vector of non-negative integers representing the number of
+# agents in Ns positions; Ns=n from before
+# m represents the maximum number of agents
+# a combination of (#&#39;0&#39;s) objects chosen with repetition from (#&#39;1&#39;s+1) positions
+#==============================================================================
+def state2code(state):
+    Ns = len(state)
+    n = Ns
+    m = np.sum(state)
+    code = Nconfiguration_detach(n,m-1)
+    
+    state = trimState(state)
+    
+    m = m-state[0]
+    n = n-1
+    
+    for k in range(2,Ns+1):
+        if m&gt;0:
+            code = code + (m&gt;0)*Nconfiguration(n+1,m)
+            m = m - state[k-1]
+            n = n-1
+            
+        else:
+            break
+        
+    code = code + 1
+    
+    return int(code)
+
+def state2code_new(state):
+    code = 0
+    
+    
+    return code
+    
+    
+
+#==============================================================================    
+# Function that gives the positions of motors on microtubule given a state
+#==============================================================================
+def state2pos(state):
+    pos = np.empty(0)
+
+    for ii in range (1,len(state)+1):
+        if state[ii-1] &gt; 0 :
+            pos = np.append(pos, ii * np.ones(int(state[ii-1])))
+    
+    pos = np.array(pos, dtype=&#39;int&#39;)    
+    return pos
+
+  
+#==============================================================================    
+# A wrong springForce implementation is used in previous code, this function is
+# just recreation of the &#34;wrong&#34; function in python in order to check the 
+# validity of other functions like eqm_cargo and state2pos
+#==============================================================================
+def dummySpringForce(l,Kel,l0):
+
+        F = 0
+        if l &gt; l0:
+            F = Kel * (l - l0)
+        
+        if l &lt; -l0:
+            F = Kel * (l + l0)
+            
+        return F
+
+#==============================================================================
+# Approx Function for determining cargo equilibrium position given the  
+# configuration of motors with no load force
+# This is the corrected version of eqm_cargo, however it is not used. 
+#==============================================================================     
+def eqm_cargo(motor, p, Fload, tol = 1e-6):
+    p = p*motor.ds
+    p = np.sort(p)
+    n = len(p)
+    
+    x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+    
+    #Check net force: 
+    nf = Fload
+    x = x0
+    for ii in range(0,n):
+        nf = nf + motor.springForce(x0 - p[ii])
+        
+    if nf &gt;= 0:
+        xhigh = x
+        xlow = xhigh - nf/motor.Kel
+        
+    else:
+        xlow = x
+        xhigh = xlow + abs(nf)/motor.Kel
+        
+    while abs(nf) &gt; tol:
+        
+        x = (xhigh + xlow)/2
+        
+        nf = Fload
+        
+        for jj in range(0,n):
+            nf = nf + motor.springForce(x -p[jj])
+            
+        if nf &gt; 0:
+            xhigh = x
+            
+        else:
+            xlow = x
+            
+    return x
+
+def eqm_cargo_modified(motor, p, Fload, tol = 1e-6):
+    p = p*motor.ds
+    p = np.sort(p)
+    n = len(p)
+    
+    if Fload == 0 and (p[0] + motor.l0 &gt;= p[-1]- motor.l0):
+        x = 0.5*(p[0]+p[-1])
+    
+        return x
+    
+    if Fload == 0 and (p[0]*motor.ds + motor.l0 &lt; p[-1]*motor.ds - motor.l0):
+        
+        x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+        
+        
+        #Check net force: 
+        nf = Fload
+        x = x0
+        for ii in range(0,n):
+            nf = nf + motor.springForce(x0 - p[ii])
+            
+        if nf &gt;= 0:
+            xhigh = x
+            xlow = xhigh - nf/motor.Kel
+            
+        else:
+            xlow = x
+            xhigh = xlow + abs(nf)/motor.Kel
+            
+        while abs(nf) &gt; tol:
+            
+            x = (xhigh + xlow)/2
+            
+            nf = Fload
+            
+            for jj in range(0,n):
+                nf = nf + motor.springForce(x -p[jj])
+                
+            if nf &gt; 0:
+                xhigh = x
+                
+            else:
+                xlow = x
+            
+        return x
+#==============================================================================
+# Approximate Function for determining cargo equilibrium position given  
+# the configuration of motors with no load force
+# This is the &#34;wrong&#34; version of eqm_cargo which is the same as 
+# Donatello&#39;s implementation. This uses dummySpringForce function and this was 
+# written just to check the validity of python engine.
+#============================================================================== 
+def dummy_eqm_cargo(motor, p, Fload, tol = 1e-6):
+    p = motor.ds*p
+    p = np.sort(p)
+    n = len(p)
+    
+    x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+
+    #Check net force:
+    nf = Fload
+    x = x0
+    for ii in range(0,n):
+        nf = nf + dummySpringForce(x0 - p[ii],motor.l0,motor.Kel)
+        
+    if nf &gt;= 0:
+        xhigh = x
+        xlow = xhigh - nf/motor.Kel
+        
+    else:
+        xlow = x
+        xhigh = xlow + abs(nf)/motor.Kel
+        
+    while abs(nf) &gt; tol:
+        
+        x = (xhigh + xlow)/2
+        
+        nf = Fload
+        
+        for jj in range(0,n):
+            nf = nf + dummySpringForce((x -p[jj]),motor.l0,motor.Kel)
+            
+        if nf &gt; 0:
+            xhigh = x
+         
+        else:
+            xlow = x
+    return x
+
+#==============================================================================
+# Exact Function for determining cargo equilibrium position given the  
+# configuration of motors. This is the actual function which is used in
+# calculating transition matrix i.e. in upcoming function trans_mat_general
+    
+&#39;&#39;&#39;
+ synopsis:
+ eq=equilibrium_cargo(p,Kel,l0,F0)
+ ---
+ p is a vector containing the positions of the motors
+ Kel is the elastic constant of the linkages
+ l0 is the rest length of the linkages
+ FLoad is the load applied on the cargo
+
+&#39;&#39;&#39;
+#============================================================================== 
+def equilibrium_cargo(motor, p, Fload, tol = 1e-6):
+    
+    if Fload == 0: 
+    #Zero load force on cargo, &#39;eqm_cargo&#39; only used here
+        eq = dummy_eqm_cargo(motor, p, Fload, tol)
+        return eq
+    
+    else:
+        p = p*motor.ds
+        p = np.sort(p)
+        
+        N = len(p)
+    
+        if Fload &gt; 0: # Positive load force on cargo
+            eq = (p[-1]- motor.l0) - Fload/motor.Kel
+            imin = 1
+            imax = N-1
+            
+        if Fload &lt; 0: # Negative load force on cargo
+            eq = (p[0]+ motor.l0) - Fload/motor.Kel
+            imin = 2
+            imax = N
+        
+        while imin &lt;= imax:
+            F = 0
+            
+            for ii in range(0,N):
+                if (p[ii] - eq) &gt; motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq - motor.l0)                   
+                    
+                if (p[ii] - eq) &lt; -motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq + motor.l0)
+                                
+            if F &lt; Fload:
+                imin = imin + 1
+                
+            if F &gt; Fload:
+                imax = imax - 1
+                
+            if abs(F-Fload) &lt;= abs(Fload)*tol:
+                break
+            
+            eq = (1/(len(p)-(imax-imin+1)))*(sum(p[:imin-1] + motor.l0) + sum(p[imax:] - motor.l0) - Fload/motor.Kel)
+
+            # check if there are no strecthed connections
+#            print(sum(abs(p[imin-1:imax] - eq) &gt; motor.l0))
+            if (sum(abs(p[imin-1:imax] - eq) &gt; motor.l0)  == 0):
+                break
+        
+        return eq
+
+#============================================================================== 
+def equilibrium_cargo_modified(motor, p, Fload, tol = 1e-6):
+    
+    if Fload == 0: 
+        #Zero load force on cargo, &#39;eqm_cargo_modified&#39; only used here
+        eq = eqm_cargo_modified(motor, p, Fload, tol)
+        return eq
+    
+    else:
+        p = p*motor.ds
+        p = np.sort(p)
+        
+        N = len(p)
+        if Fload &gt; 0: # Positive load force on cargo
+            eq = (p[-1]- motor.l0) - Fload/motor.Kel
+            imin = 1
+            imax = N-1
+            
+        if Fload &lt; 0: # Negative load force on cargo
+            eq = (p[0]+ motor.l0) - Fload/motor.Kel
+            imin = 2
+            imax = N
+        
+        while imin &lt;= imax:
+            F = 0
+            
+            for ii in range(0,N):
+                if (p[ii] - eq) &gt; motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq - motor.l0)                   
+                    
+                if (p[ii] - eq) &lt; -motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq + motor.l0)
+                                
+            if F &lt; Fload:
+                imin = imin + 1
+                
+            if F &gt; Fload:
+                imax = imax - 1
+                
+            if abs(F-Fload) &lt;= abs(Fload)*tol:
+                break
+            
+            eq = (1/(len(p)-(imax-imin+1)))*(sum(p[:imin-1] + motor.l0) + sum(p[imax:] - motor.l0) - Fload/motor.Kel)
+
+            # check if there are no strecthed connections
+#            print(sum(abs(p[imin-1:imax] - eq) &gt; motor.l0))
+            if (sum(abs(p[imin-1:imax] - eq) &gt; motor.l0)  == 0):
+                break
+        
+        return eq
+
+#==============================================================================
+#Bunch of functions to get force array for a state
+
+def get_unique_pos(pos):
+    unique_pos = []
+    for ii in pos:
+        if ii not in unique_pos:
+            unique_pos.append(ii)
+    return unique_pos
+
+def get_pos_freq(pos):
+    pos_freq = [len(list(group)) for key, group in groupby(pos)]
+    return pos_freq
+
+def get_force_array(state,Fload,tol):
+    
+    pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+    unique_pos = get_unique_pos(pos)
+    pos_freq = get_pos_freq(pos)
+    
+    if pos.size == 0:
+            x_c = 0        
+    else:
+        x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+        Force = []
+    for ii in unique_pos:
+        Force.append(motor.springForce((ii)*motor.ds - x_c))
+    
+    return Force
+
+#==============================================================================
+# Function to calculate transition matrix. This is the main function 
+# [A n D Psingle self_state StepStat, ProbCargoStep] = trans_mat_general(motor, F, m)
+&#39;&#39;&#39;
+This function takes in the motor parameters, load force and number of motors
+to give out a N by N transition matrix where N is the maximum number of relative
+configurations given maximum m number of motors are present on the cargo.
+
+&#39;&#39;&#39;
+#============================================================================== 
+def getTransitionMatrix_2sided(motor, Fload, m, tol):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    #A = A.tocoo() #Converting from Dictionary of keys to coordinate format matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+    #D = D.tocoo() 
+    stepStat = []
+    probCargoStep = []
+    for code in range(1,N+1): 
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+    #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c) 
+                #Calculate the force acting on ONE motor at a position
+                
+                &#39;&#39;&#39;
+                Sends l= (i*ds-x_c) which is stretched linkage adjusted by 
+                cargo position x_c. 
+                Fm(i) contains value of force exerted by a motor at i th
+                location
+                
+                &#39;&#39;&#39;
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                newCode = state2code(newState) 
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * (motor.Pstep_2sided(Fm)[0]) 
+                    #[0] index in Pstep gives the probability and [1] index gives the epsilon
+                else:
+                    Psingle.append(motor.Pstep_2sided(Fm)[0])
+                    selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * (motor.Pstep_2sided(Fm)[0])
+                tempVar = np.array([code,newCode,1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c), (motor.Pstep_2sided(Fm)[0]) * state[ii]])
+              
+    #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if newPos.size == 0:
+                    new_x_c = x_c
+                else:
+                    new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * motor.Pdetach_2sided(Fm)
+                
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * motor.Pdetach_2sided(Fm)
+                tempVar = np.array([code,newCode,-1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c),  state[ii] * motor.Pdetach_2sided(Fm)])  
+                
+    #==================== Compute attachment Transition rates =====================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                newCode = state2code(newState)
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                
+    # for ii in range(0,N):
+    #     A[ii,ii] =  - np.sum(A[:,ii])    
+    
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag)
+
+    return A, D
+
+#============================================================================
+def getTransitionMatrix(motor, Fload, m, tol, twoSided = False):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    #A = A.tocoo() #Converting from Dictionary of keys to coordinate format matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+    #D = D.tocoo() 
+    stepStat = []
+    probCargoStep = []
+    
+    for code in range(1,N+1): 
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+    #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c) 
+                #Calculate the force acting on ONE motor at a position
+                
+                &#39;&#39;&#39;
+                Sends l= (i*ds-x_c) which is stretched linkage adjusted by 
+                cargo position x_c. 
+                Fm(i) contains value of force exerted by a motor at i th
+                location
+                
+                &#39;&#39;&#39;
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                newCode = state2code(newState) 
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                if twoSided:
+                    Pstep = motor.Pstep_2sided(Fm)[0]  
+                else:
+                    Pstep = motor.Pstep_1sided(Fm)[0]
+                    
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pstep 
+                    #[0] index in Pstep gives the probability and [1] index gives the epsilon
+                else:
+                    Psingle.append(Pstep)
+                    selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pstep
+                tempVar = np.array([code,newCode,1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c), Pstep * state[ii]])
+              
+    #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if newPos.size == 0:
+                    new_x_c = x_c
+                else:
+                    new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                if twoSided:
+                    Pdetach = motor.Pdetach_2sided(Fm)   
+                else:
+                    Pdetach = motor.Pdetach_1sided(Fm)
+                    
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pdetach
+                
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pdetach
+                tempVar = np.array([code,newCode,-1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c),  state[ii] * Pdetach])
+                
+    #==================== Compute attachment Transition rates =====================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                newCode = state2code(newState)
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+    
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag)            
+    
+    
+    # for ii in range(0,N):
+    #     A[ii,ii] =  - np.sum(A[:,ii])          
+
+    return A, D
+
+
+#==============================================================================
+
+def getTransitionMatrix_relSpace(motor, Fload, m, bigRelSpace, tol, twoSided = False):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+
+    stepStat = []
+    probCargoStep = []
+    
+    # import time as time
+    # start = time.time()
+    
+    for code in range(1,N+1): 
+        j = 1
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+            
+        #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c)
+                
+                if twoSided:
+                    Pstep = motor.Pstep_2sided(Fm)[0]
+                
+                else:
+                    Pstep = motor.Pstep_1sided(Fm)[0]
+                
+
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                # newCode = state2code(newState) 
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                j += 1
+                if newCode != code:
+
+                    A[newCode-1,code-1] += state[ii] * Pstep
+
+                
+                # else:
+                #     Psingle.append(motor.Pstep_2sided(Fm)[0])
+                #     selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pstep
+                # tempVar = np.array([code,newCode,1])
+                # if new_x_c != x_c:
+                #     stepStat.append(tempVar)
+                #     probCargoStep.append([(new_x_c - x_c), (motor.Pstep_2sided(Fm)[0]) * state[ii]])
+                  
+        #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            
+            if state[ii] &gt; 0:
+                
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                # newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if twoSided:
+                    Pdetach = motor.Pdetach_2sided(Fm)
+                
+                else:
+                    Pdetach = motor.Pdetach_1sided(Fm)
+                
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                # if newPos.size == 0:
+                #     new_x_c = x_c
+                # else:
+                #     new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                j += 1
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pdetach
+                
+                #Not used immediately in pdf calculation (?)
+               
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pdetach
+                # tempVar = np.array([code,newCode,-1])
+                # if new_x_c != x_c:
+                #     stepStat.append(tempVar)
+                #     probCargoStep.append([(new_x_c - x_c),  state[ii] * motor.Pdetach_2sided(Fm)])  
+                
+        #==================== Compute attachment Transition rates =================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                # newCode = state2code(newState)
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                j += 1
+               
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+        
+            
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag) #Setting the diagonal to be sum of column without a for loop      
+
+    return A, D
+#==============================================================================
+# Set of functions to get the initial PDF of all configurations
+&#39;&#39;&#39;
+There are 3 functions in this section.
+Take in number of motors, Load Force and motor parameters as inputs. 
+More explanation to follow.
+&#39;&#39;&#39;
+#============================================================================== 
+def initPDF(motor,m):
+    numPos = int(2* np.floor(motor.l0/motor.ds) + 1)
+    n = Nconfiguration_detach(numPos, m)
+    
+    stateVec = np.zeros((n,numPos + 2), dtype = &#39;float32&#39;)
+    pdf = np.zeros(n,dtype = &#39;float32&#39;)
+    
+    for ii in range(1,n+1):
+        state, Nm = code2state(ii, numPos)
+        stateVec[ii-1,:numPos] = state
+        
+    for ii in range(0,n):
+        ma = 0 #number of motors attached
+        c = 0 #number of clusters
+        s = 0 #spread
+        mcvec = []
+        
+        for jj in range(0,numPos):
+            sv = stateVec[ii][jj]
+            if sv &gt; 0: # i.e. motor is attached to MT at that location
+                c += 1 #cluster found, update c by 1
+                ma += sv #count the number of motors attached
+                s = jj + 1 #spread = current location under consideration, i.e. jj
+                mcvec.append(sv)
+                
+        nr = 1
+        dr = 1
+        
+        for kk in range(0,c-1):
+            nr = nr*np.math.factorial(ma)
+            ma = ma - mcvec[c-1]
+            dr = dr*np.math.factorial(int(mcvec[c-1]))
+            
+        mc = nr/dr
+        deg = mc*(numPos - s + 1)
+        stateVec[ii][numPos] = deg
+    
+    #Inserting the probabilities into the 2 extra columns  
+    &#39;&#39;&#39;
+    At least one motor assumed attached to the cargo, so the 0-motor attached 
+    case is removed, here
+    &#39;&#39;&#39;
+    stateVec[0][numPos] = 0 
+    normalizingSum = np.sum(stateVec,axis = 0)[-2] #Sum of 2nd last column
+        
+    for ii in range(0,n):
+        stateVec[ii, numPos + 1] = (stateVec[ii,numPos]) / normalizingSum
+        pdf[ii] = (stateVec[ii,numPos]) / normalizingSum
+    
+    pdf[pdf&lt;0] = 0
+    
+    return pdf, stateVec
+
+def initPDFmod(motor,m,Fload):
+    n = Nlocations(m, motor, Fload)
+    
+    &#39;&#39;&#39;
+    Some doubt about what n should be here! look deeper into this.
+    &#39;&#39;&#39;
+    
+#    n = int(2* np.floor(motor.l0/motor.ds) + 1)
+    N = Nconfiguration_detach(n,m)
+    pdf = np.zeros(N,dtype=&#39;float32&#39;)
+    
+    pdf_nz, stateVec = initPDF(motor,m)
+    
+    for ii in range(0,len(pdf_nz)):
+        tempVar = np.zeros(n,dtype=&#39;int16&#39;) #Integer (-32768 to 32767) valued array
+        tempVar[0:len(stateVec[ii][:-2])] = (stateVec[ii][:-2])
+        code = state2code(tempVar)
+        pdf[code-1] = pdf_nz[ii]
+    
+    pdf[pdf&lt;0] = 0
+    return pdf
+
+&#39;&#39;&#39;
+next step, define initialize pdf. 
+&#39;&#39;&#39;
+def initializePDF(motor,m,Fload,Pa):
+    n = Nlocations(m, motor, Fload)
+    numMotors = np.empty(0,dtype = &#39;int16&#39;)
+    
+    for nm in range(0,m+1):
+        numMotors = np.append(numMotors, nm*np.ones(Nconfiguration(n,nm)))
+
+    pdf = initPDFmod(motor,m,Fload)   
+    pdf[0] = 1
+    pdf0 = np.zeros(len(pdf))
+    
+    for nm in range(0,m+1):
+        tempVar = pdf * (np.array([ii==nm for ii in numMotors]))
+        tempVar = tempVar / sum(tempVar)
+        value = (np.math.factorial(m)/(np.math.factorial(nm)*np.math.factorial(m-nm))*( (1-Pa)**(m-nm)*Pa**(nm) ))
+        tempVar = tempVar * value
+        pdf0 = pdf0 + tempVar
+        
+    pdf0 = pdf0 / sum(pdf0)
+    pdf0[pdf0&lt;0] = 0
+    
+    return pdf0
+    
+#%% 
+l0 = 110
+Kel = 0.32e-3
+ds = 8
+Fs = 0.006
+Pattach = 5
+motor_type = &#39;kinesin&#39;
+Fload = 0.0
+m = 7
+tol = 1e-6
+ATP = 0.002
+Pback = 2
+K_Pd = 0.04
+motor = createMotor(l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type)
+
+
+# Finding Bound on extent, n
+n = Nlocations(m, motor, Fload)
+# Finding number of possible relative configuration
+n = 24
+N = Nconfiguration_detach(n,m)
+#%%
+Fload = 0.002
+code = 20
+state,Nm = code2state(code,n)
+pos = state2pos(state)
+x = equilibrium_cargo_modified(motor, pos, Fload, tol)
+
+print(x)
+# pdf = initializePDF(motor,m,Fload,1)
+# A,D = getTransitionMatrix(motor, Fload, m, tol, twoSided = False)
+#%%</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="motor.Nconfiguration"><code class="name flex">
+<span>def <span class="ident">Nconfiguration</span></span>(<span>n, m)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Nconfiguration(n,m):
+    if m &lt; 0:
+        N = 0
+        
+    elif m == 0:
+        N = 1
+        
+    else:
+        N = 1
+        for ii in range (n,n+m-1):
+            N = N*ii
+        N = N/ np.math.factorial(m-1)
+    return int(N)
+
+    #Easier Implementation
+    # N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))</code></pre>
+</details>
+</dd>
+<dt id="motor.Nconfiguration_detach"><code class="name flex">
+<span>def <span class="ident">Nconfiguration_detach</span></span>(<span>n, m)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Nconfiguration_detach(n,m):
+    N = 0
+    for ii in range (0,m+1):
+        N = N + Nconfiguration(n,ii)
+        
+    return int(N)</code></pre>
+</details>
+</dd>
+<dt id="motor.Nlocations"><code class="name flex">
+<span>def <span class="ident">Nlocations</span></span>(<span>m, motor, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Nlocations(m, motor, Fm):
+    
+    dmax1 = (m*motor.Fs-Fm)/motor.Kel + motor.ds
+    dmax2 = Fm/motor.Kel
+    dmax = max(dmax1,dmax2) + 2*motor.l0
+
+    n = np.ceil(dmax/motor.ds) + 1
+    n = n + 1 # Figure out +1 thing here.
+    
+    return int(n)</code></pre>
+</details>
+</dd>
+<dt id="motor.Nlocations_old"><code class="name flex">
+<span>def <span class="ident">Nlocations_old</span></span>(<span>m, l0, ds, Fs, Kel, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Nlocations_old(m,l0,ds,Fs,Kel,Fm):
+    
+    dmax1 = (m*Fs-Fm)/Kel + ds
+    dmax2 = Fm/Kel
+    dmax = max(dmax1,dmax2) + 2*l0
+
+    n = np.ceil(dmax/ds) + 1
+    n = n + 1 # Figure out +1 thing here.
+    
+    return int(n)</code></pre>
+</details>
+</dd>
+<dt id="motor.code2fullState"><code class="name flex">
+<span>def <span class="ident">code2fullState</span></span>(<span>motor, code, n, Fload=0.0002, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def code2fullState(motor,code,n, Fload = 0.0002, tol = 1e-6):
+    
+    locNumber = np.arange(1,n+1,1)
+    
+    state, Nm = code2state(code,n)
+    pos = state2pos(state)
+    
+    forceArray = np.zeros(n)
+    forceLoc = np.where(state &gt; 0)
+    force = np.array(get_force_array(state,Fload,tol))
+    forceArray[forceLoc] = force/motor.Fs  #How strong the force is wrt stall force
+    
+    cargoPos = equilibrium_cargo_modified(motor, pos, Fload)
+    cargoArr = np.zeros(n)
+    cargoLoc = int(cargoPos/motor.ds)
+    if cargoLoc &gt; 0 &amp; cargoLoc &lt;= n:
+        cargoArr[cargoLoc] = 1
+       
+    fullState = {}
+    fullState[&#39;locNumber&#39;] = locNumber
+    fullState[&#39;Configuration&#39;] = state
+    fullState[&#39;forceArray&#39;] = forceArray
+    fullState[&#39;cargoArr&#39;] = cargoArr
+    
+    return np.array([locNumber,state,forceArray,cargoArr]), fullState</code></pre>
+</details>
+</dd>
+<dt id="motor.code2state"><code class="name flex">
+<span>def <span class="ident">code2state</span></span>(<span>code, n)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def code2state(code,n):
+    
+    Ns = n # Bound on extent
+    m = 0
+    
+    while Nconfiguration_detach(n,m) &lt; code:
+        m += 1
+        
+    Nm = m
+    state = np.zeros(Ns, dtype = &#39;int&#39;)
+    
+    if Nm == 0:
+        return state, Nm
+    
+    
+    if Nm != 0:
+        
+        code = code - Nconfiguration_detach(n,m-1) - 1
+        n = n-1
+        
+        k = 1
+        state[0] = 1
+        m = m-1
+        
+        if m &gt; 0:
+            while k &lt;= Ns:
+                N = Nconfiguration(n+1,m)
+                if code &gt;= N:
+                    k = k+1
+                    n = n-1
+                    code = code -N
+                else:
+                    m = m-1
+                    state[k-1] = state[k-1] + 1
+                    
+                if m &lt;= 0:
+                    break
+        state = np.array(state, dtype=&#39;int&#39;)
+        return state, Nm</code></pre>
+</details>
+</dd>
+<dt id="motor.createMotor"><code class="name flex">
+<span>def <span class="ident">createMotor</span></span>(<span>l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createMotor(l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type):
+   k = motorClass(l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type) 
+   return k</code></pre>
+</details>
+</dd>
+<dt id="motor.dummySpringForce"><code class="name flex">
+<span>def <span class="ident">dummySpringForce</span></span>(<span>l, Kel, l0)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dummySpringForce(l,Kel,l0):
+
+        F = 0
+        if l &gt; l0:
+            F = Kel * (l - l0)
+        
+        if l &lt; -l0:
+            F = Kel * (l + l0)
+            
+        return F</code></pre>
+</details>
+</dd>
+<dt id="motor.dummy_eqm_cargo"><code class="name flex">
+<span>def <span class="ident">dummy_eqm_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dummy_eqm_cargo(motor, p, Fload, tol = 1e-6):
+    p = motor.ds*p
+    p = np.sort(p)
+    n = len(p)
+    
+    x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+
+    #Check net force:
+    nf = Fload
+    x = x0
+    for ii in range(0,n):
+        nf = nf + dummySpringForce(x0 - p[ii],motor.l0,motor.Kel)
+        
+    if nf &gt;= 0:
+        xhigh = x
+        xlow = xhigh - nf/motor.Kel
+        
+    else:
+        xlow = x
+        xhigh = xlow + abs(nf)/motor.Kel
+        
+    while abs(nf) &gt; tol:
+        
+        x = (xhigh + xlow)/2
+        
+        nf = Fload
+        
+        for jj in range(0,n):
+            nf = nf + dummySpringForce((x -p[jj]),motor.l0,motor.Kel)
+            
+        if nf &gt; 0:
+            xhigh = x
+         
+        else:
+            xlow = x
+    return x</code></pre>
+</details>
+</dd>
+<dt id="motor.eqm_cargo"><code class="name flex">
+<span>def <span class="ident">eqm_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def eqm_cargo(motor, p, Fload, tol = 1e-6):
+    p = p*motor.ds
+    p = np.sort(p)
+    n = len(p)
+    
+    x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+    
+    #Check net force: 
+    nf = Fload
+    x = x0
+    for ii in range(0,n):
+        nf = nf + motor.springForce(x0 - p[ii])
+        
+    if nf &gt;= 0:
+        xhigh = x
+        xlow = xhigh - nf/motor.Kel
+        
+    else:
+        xlow = x
+        xhigh = xlow + abs(nf)/motor.Kel
+        
+    while abs(nf) &gt; tol:
+        
+        x = (xhigh + xlow)/2
+        
+        nf = Fload
+        
+        for jj in range(0,n):
+            nf = nf + motor.springForce(x -p[jj])
+            
+        if nf &gt; 0:
+            xhigh = x
+            
+        else:
+            xlow = x
+            
+    return x</code></pre>
+</details>
+</dd>
+<dt id="motor.eqm_cargo_modified"><code class="name flex">
+<span>def <span class="ident">eqm_cargo_modified</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def eqm_cargo_modified(motor, p, Fload, tol = 1e-6):
+    p = p*motor.ds
+    p = np.sort(p)
+    n = len(p)
+    
+    if Fload == 0 and (p[0] + motor.l0 &gt;= p[-1]- motor.l0):
+        x = 0.5*(p[0]+p[-1])
+    
+        return x
+    
+    if Fload == 0 and (p[0]*motor.ds + motor.l0 &lt; p[-1]*motor.ds - motor.l0):
+        
+        x0 = (Fload + motor.Kel*n*motor.l0 + motor.Kel*(np.sum(p)))/n #First Guess
+        
+        
+        #Check net force: 
+        nf = Fload
+        x = x0
+        for ii in range(0,n):
+            nf = nf + motor.springForce(x0 - p[ii])
+            
+        if nf &gt;= 0:
+            xhigh = x
+            xlow = xhigh - nf/motor.Kel
+            
+        else:
+            xlow = x
+            xhigh = xlow + abs(nf)/motor.Kel
+            
+        while abs(nf) &gt; tol:
+            
+            x = (xhigh + xlow)/2
+            
+            nf = Fload
+            
+            for jj in range(0,n):
+                nf = nf + motor.springForce(x -p[jj])
+                
+            if nf &gt; 0:
+                xhigh = x
+                
+            else:
+                xlow = x
+            
+        return x</code></pre>
+</details>
+</dd>
+<dt id="motor.equilibrium_cargo"><code class="name flex">
+<span>def <span class="ident">equilibrium_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equilibrium_cargo(motor, p, Fload, tol = 1e-6):
+    
+    if Fload == 0: 
+    #Zero load force on cargo, &#39;eqm_cargo&#39; only used here
+        eq = dummy_eqm_cargo(motor, p, Fload, tol)
+        return eq
+    
+    else:
+        p = p*motor.ds
+        p = np.sort(p)
+        
+        N = len(p)
+    
+        if Fload &gt; 0: # Positive load force on cargo
+            eq = (p[-1]- motor.l0) - Fload/motor.Kel
+            imin = 1
+            imax = N-1
+            
+        if Fload &lt; 0: # Negative load force on cargo
+            eq = (p[0]+ motor.l0) - Fload/motor.Kel
+            imin = 2
+            imax = N
+        
+        while imin &lt;= imax:
+            F = 0
+            
+            for ii in range(0,N):
+                if (p[ii] - eq) &gt; motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq - motor.l0)                   
+                    
+                if (p[ii] - eq) &lt; -motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq + motor.l0)
+                                
+            if F &lt; Fload:
+                imin = imin + 1
+                
+            if F &gt; Fload:
+                imax = imax - 1
+                
+            if abs(F-Fload) &lt;= abs(Fload)*tol:
+                break
+            
+            eq = (1/(len(p)-(imax-imin+1)))*(sum(p[:imin-1] + motor.l0) + sum(p[imax:] - motor.l0) - Fload/motor.Kel)
+
+            # check if there are no strecthed connections
+#            print(sum(abs(p[imin-1:imax] - eq) &gt; motor.l0))
+            if (sum(abs(p[imin-1:imax] - eq) &gt; motor.l0)  == 0):
+                break
+        
+        return eq</code></pre>
+</details>
+</dd>
+<dt id="motor.equilibrium_cargo_modified"><code class="name flex">
+<span>def <span class="ident">equilibrium_cargo_modified</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def equilibrium_cargo_modified(motor, p, Fload, tol = 1e-6):
+    
+    if Fload == 0: 
+        #Zero load force on cargo, &#39;eqm_cargo_modified&#39; only used here
+        eq = eqm_cargo_modified(motor, p, Fload, tol)
+        return eq
+    
+    else:
+        p = p*motor.ds
+        p = np.sort(p)
+        
+        N = len(p)
+        if Fload &gt; 0: # Positive load force on cargo
+            eq = (p[-1]- motor.l0) - Fload/motor.Kel
+            imin = 1
+            imax = N-1
+            
+        if Fload &lt; 0: # Negative load force on cargo
+            eq = (p[0]+ motor.l0) - Fload/motor.Kel
+            imin = 2
+            imax = N
+        
+        while imin &lt;= imax:
+            F = 0
+            
+            for ii in range(0,N):
+                if (p[ii] - eq) &gt; motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq - motor.l0)                   
+                    
+                if (p[ii] - eq) &lt; -motor.l0:
+                    F = F + motor.Kel * (p[ii] - eq + motor.l0)
+                                
+            if F &lt; Fload:
+                imin = imin + 1
+                
+            if F &gt; Fload:
+                imax = imax - 1
+                
+            if abs(F-Fload) &lt;= abs(Fload)*tol:
+                break
+            
+            eq = (1/(len(p)-(imax-imin+1)))*(sum(p[:imin-1] + motor.l0) + sum(p[imax:] - motor.l0) - Fload/motor.Kel)
+
+            # check if there are no strecthed connections
+#            print(sum(abs(p[imin-1:imax] - eq) &gt; motor.l0))
+            if (sum(abs(p[imin-1:imax] - eq) &gt; motor.l0)  == 0):
+                break
+        
+        return eq</code></pre>
+</details>
+</dd>
+<dt id="motor.getColumn"><code class="name flex">
+<span>def <span class="ident">getColumn</span></span>(<span>lol, colNum)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getColumn(lol,colNum):
+    column = []
+    for ii in range(0,5):
+        column.append(lol[ii][colNum])
+        
+    return column</code></pre>
+</details>
+</dd>
+<dt id="motor.getTransitionMatrix"><code class="name flex">
+<span>def <span class="ident">getTransitionMatrix</span></span>(<span>motor, Fload, m, tol, twoSided=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTransitionMatrix(motor, Fload, m, tol, twoSided = False):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    #A = A.tocoo() #Converting from Dictionary of keys to coordinate format matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+    #D = D.tocoo() 
+    stepStat = []
+    probCargoStep = []
+    
+    for code in range(1,N+1): 
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+    #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c) 
+                #Calculate the force acting on ONE motor at a position
+                
+                &#39;&#39;&#39;
+                Sends l= (i*ds-x_c) which is stretched linkage adjusted by 
+                cargo position x_c. 
+                Fm(i) contains value of force exerted by a motor at i th
+                location
+                
+                &#39;&#39;&#39;
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                newCode = state2code(newState) 
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                if twoSided:
+                    Pstep = motor.Pstep_2sided(Fm)[0]  
+                else:
+                    Pstep = motor.Pstep_1sided(Fm)[0]
+                    
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pstep 
+                    #[0] index in Pstep gives the probability and [1] index gives the epsilon
+                else:
+                    Psingle.append(Pstep)
+                    selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pstep
+                tempVar = np.array([code,newCode,1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c), Pstep * state[ii]])
+              
+    #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if newPos.size == 0:
+                    new_x_c = x_c
+                else:
+                    new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                if twoSided:
+                    Pdetach = motor.Pdetach_2sided(Fm)   
+                else:
+                    Pdetach = motor.Pdetach_1sided(Fm)
+                    
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pdetach
+                
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pdetach
+                tempVar = np.array([code,newCode,-1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c),  state[ii] * Pdetach])
+                
+    #==================== Compute attachment Transition rates =====================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                newCode = state2code(newState)
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+    
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag)            
+    
+    
+    # for ii in range(0,N):
+    #     A[ii,ii] =  - np.sum(A[:,ii])          
+
+    return A, D</code></pre>
+</details>
+</dd>
+<dt id="motor.getTransitionMatrix_2sided"><code class="name flex">
+<span>def <span class="ident">getTransitionMatrix_2sided</span></span>(<span>motor, Fload, m, tol)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTransitionMatrix_2sided(motor, Fload, m, tol):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    #A = A.tocoo() #Converting from Dictionary of keys to coordinate format matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+    #D = D.tocoo() 
+    stepStat = []
+    probCargoStep = []
+    for code in range(1,N+1): 
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+    #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c) 
+                #Calculate the force acting on ONE motor at a position
+                
+                &#39;&#39;&#39;
+                Sends l= (i*ds-x_c) which is stretched linkage adjusted by 
+                cargo position x_c. 
+                Fm(i) contains value of force exerted by a motor at i th
+                location
+                
+                &#39;&#39;&#39;
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                newCode = state2code(newState) 
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * (motor.Pstep_2sided(Fm)[0]) 
+                    #[0] index in Pstep gives the probability and [1] index gives the epsilon
+                else:
+                    Psingle.append(motor.Pstep_2sided(Fm)[0])
+                    selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * (motor.Pstep_2sided(Fm)[0])
+                tempVar = np.array([code,newCode,1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c), (motor.Pstep_2sided(Fm)[0]) * state[ii]])
+              
+    #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if newPos.size == 0:
+                    new_x_c = x_c
+                else:
+                    new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * motor.Pdetach_2sided(Fm)
+                
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * motor.Pdetach_2sided(Fm)
+                tempVar = np.array([code,newCode,-1])
+                if new_x_c != x_c:
+                    stepStat.append(tempVar)
+                    probCargoStep.append([(new_x_c - x_c),  state[ii] * motor.Pdetach_2sided(Fm)])  
+                
+    #==================== Compute attachment Transition rates =====================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                newCode = state2code(newState)
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                
+    # for ii in range(0,N):
+    #     A[ii,ii] =  - np.sum(A[:,ii])    
+    
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag)
+
+    return A, D</code></pre>
+</details>
+</dd>
+<dt id="motor.getTransitionMatrix_relSpace"><code class="name flex">
+<span>def <span class="ident">getTransitionMatrix_relSpace</span></span>(<span>motor, Fload, m, bigRelSpace, tol, twoSided=False)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getTransitionMatrix_relSpace(motor, Fload, m, bigRelSpace, tol, twoSided = False):
+    Psingle = []
+    selfState = []
+    
+    # Finding Bound on extent, n
+    n = Nlocations(m, motor, Fload)
+    
+    # Finding number of possible relative configuration
+    N = Nconfiguration_detach(n,m)
+    
+    A = sparse.dok_matrix((N, N), dtype=np.float32) #Create NxN sparse matrix
+    D = sparse.dok_matrix((N, N), dtype=np.float32) #Create anther NxN sparse matrix
+
+    stepStat = []
+    probCargoStep = []
+    
+    # import time as time
+    # start = time.time()
+    
+    for code in range(1,N+1): 
+        j = 1
+        # step through each code ascribed to all the relative configurations
+        state, Nm = code2state(code,n) 
+        # state corresponding to the current code obtained
+        pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+        
+        if pos.size == 0:
+            x_c = 0        
+        else:
+            x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+            
+        #==================== Compute Step Transition rates =======================
+        for ii in range(0,n-1):
+            
+            if state[ii] &gt; 0:
+                Fm = motor.springForce((ii+1)*motor.ds - x_c)
+                
+                if twoSided:
+                    Pstep = motor.Pstep_2sided(Fm)[0]
+                
+                else:
+                    Pstep = motor.Pstep_1sided(Fm)[0]
+                
+
+                #Step transition happening
+                newState = np.copy(state)
+                newState[ii] = newState[ii] -1  
+                newState[ii+1] = newState[ii+1] + 1 
+                #new state obtained by this point
+    
+                # newCode = state2code(newState) 
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                #code for new state obtained
+                newPos = state2pos(newState) 
+                #new motor positions in the new state obtained
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol) 
+                #new equilibrium position obtained
+                j += 1
+                if newCode != code:
+
+                    A[newCode-1,code-1] += state[ii] * Pstep
+
+                
+                # else:
+                #     Psingle.append(motor.Pstep_2sided(Fm)[0])
+                #     selfState.append(code)
+                    
+                #Not used immediately in pdf calculation (?)
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pstep
+                # tempVar = np.array([code,newCode,1])
+                # if new_x_c != x_c:
+                #     stepStat.append(tempVar)
+                #     probCargoStep.append([(new_x_c - x_c), (motor.Pstep_2sided(Fm)[0]) * state[ii]])
+                  
+        #==================== Compute Detachmemt Transition rates =================
+        for ii in range(0,n):
+            
+            if state[ii] &gt; 0:
+                
+                Fm = motor.springForce((ii+1)*ds - x_c)
+                newState = np.copy(state)
+                newState[ii] = newState[ii] - 1 
+                # detachment event occured, new state obtained
+                # newCode = state2code(newState) #code for new state obtained
+                newPos = state2pos(newState)
+                
+                if twoSided:
+                    Pdetach = motor.Pdetach_2sided(Fm)
+                
+                else:
+                    Pdetach = motor.Pdetach_1sided(Fm)
+                
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                # if newPos.size == 0:
+                #     new_x_c = x_c
+                # else:
+                #     new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                j += 1
+                if newCode != code:
+                    A[newCode-1,code-1] += state[ii] * Pdetach
+                
+                #Not used immediately in pdf calculation (?)
+               
+                D[newCode-1,code-1] += (new_x_c - x_c) * state[ii] * Pdetach
+                # tempVar = np.array([code,newCode,-1])
+                # if new_x_c != x_c:
+                #     stepStat.append(tempVar)
+                #     probCargoStep.append([(new_x_c - x_c),  state[ii] * motor.Pdetach_2sided(Fm)])  
+                
+        #==================== Compute attachment Transition rates =================
+        floatMotors = int(m - sum(state))
+        
+        if sum(state) &lt; m and sum(state) &gt; 0:
+            minReattachLoc = int(np.ceil((x_c - motor.l0)/motor.ds))
+            maxReattachLoc = int(np.floor((x_c + motor.l0)/motor.ds))
+            
+            if minReattachLoc &lt;= 0:
+                shiftedState = np.append(np.zeros(1-minReattachLoc) ,state)
+                shiftedState = shiftedState[:n]
+                maxReattachLoc += 1 - minReattachLoc
+                minReattachLoc = 1    
+            else:
+                shiftedState = np.copy(state)
+                
+            for jj in range(minReattachLoc-1, maxReattachLoc):
+                
+                newState = np.copy(shiftedState)
+                newState = np.array(newState, dtype = &#39;int&#39;)
+                newState[jj] += 1
+                
+                shiftedPos = state2pos(shiftedState)
+                shifted_x_c = equilibrium_cargo_modified(motor, shiftedPos, Fload, tol)
+                
+                newPos = state2pos(newState)
+                new_x_c = equilibrium_cargo_modified(motor, newPos, Fload, tol)
+                
+                # newCode = state2code(newState)
+                newCode = bigRelSpace[tuple(state.tolist())][j]
+                j += 1
+               
+                A[newCode-1,code-1] += floatMotors*motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+                D[newCode-1,code-1] += (new_x_c - shifted_x_c) * floatMotors * motor.Pattach / (1 + maxReattachLoc - minReattachLoc)
+        
+            
+    diag = np.ravel(-1*A.sum(0)) #Column sum of sparse matrix A
+    A.setdiag(diag) #Setting the diagonal to be sum of column without a for loop      
+
+    return A, D</code></pre>
+</details>
+</dd>
+<dt id="motor.get_force_array"><code class="name flex">
+<span>def <span class="ident">get_force_array</span></span>(<span>state, Fload, tol)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_force_array(state,Fload,tol):
+    
+    pos = state2pos(state) 
+        # positions of motors corresponding to state obtained
+    unique_pos = get_unique_pos(pos)
+    pos_freq = get_pos_freq(pos)
+    
+    if pos.size == 0:
+            x_c = 0        
+    else:
+        x_c = equilibrium_cargo_modified(motor, pos, Fload, tol) 
+            #Calculate the equilibrium position of cargo       
+        
+        Force = []
+    for ii in unique_pos:
+        Force.append(motor.springForce((ii)*motor.ds - x_c))
+    
+    return Force</code></pre>
+</details>
+</dd>
+<dt id="motor.get_pos_freq"><code class="name flex">
+<span>def <span class="ident">get_pos_freq</span></span>(<span>pos)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_pos_freq(pos):
+    pos_freq = [len(list(group)) for key, group in groupby(pos)]
+    return pos_freq</code></pre>
+</details>
+</dd>
+<dt id="motor.get_unique_pos"><code class="name flex">
+<span>def <span class="ident">get_unique_pos</span></span>(<span>pos)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_unique_pos(pos):
+    unique_pos = []
+    for ii in pos:
+        if ii not in unique_pos:
+            unique_pos.append(ii)
+    return unique_pos</code></pre>
+</details>
+</dd>
+<dt id="motor.initPDF"><code class="name flex">
+<span>def <span class="ident">initPDF</span></span>(<span>motor, m)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initPDF(motor,m):
+    numPos = int(2* np.floor(motor.l0/motor.ds) + 1)
+    n = Nconfiguration_detach(numPos, m)
+    
+    stateVec = np.zeros((n,numPos + 2), dtype = &#39;float32&#39;)
+    pdf = np.zeros(n,dtype = &#39;float32&#39;)
+    
+    for ii in range(1,n+1):
+        state, Nm = code2state(ii, numPos)
+        stateVec[ii-1,:numPos] = state
+        
+    for ii in range(0,n):
+        ma = 0 #number of motors attached
+        c = 0 #number of clusters
+        s = 0 #spread
+        mcvec = []
+        
+        for jj in range(0,numPos):
+            sv = stateVec[ii][jj]
+            if sv &gt; 0: # i.e. motor is attached to MT at that location
+                c += 1 #cluster found, update c by 1
+                ma += sv #count the number of motors attached
+                s = jj + 1 #spread = current location under consideration, i.e. jj
+                mcvec.append(sv)
+                
+        nr = 1
+        dr = 1
+        
+        for kk in range(0,c-1):
+            nr = nr*np.math.factorial(ma)
+            ma = ma - mcvec[c-1]
+            dr = dr*np.math.factorial(int(mcvec[c-1]))
+            
+        mc = nr/dr
+        deg = mc*(numPos - s + 1)
+        stateVec[ii][numPos] = deg
+    
+    #Inserting the probabilities into the 2 extra columns  
+    &#39;&#39;&#39;
+    At least one motor assumed attached to the cargo, so the 0-motor attached 
+    case is removed, here
+    &#39;&#39;&#39;
+    stateVec[0][numPos] = 0 
+    normalizingSum = np.sum(stateVec,axis = 0)[-2] #Sum of 2nd last column
+        
+    for ii in range(0,n):
+        stateVec[ii, numPos + 1] = (stateVec[ii,numPos]) / normalizingSum
+        pdf[ii] = (stateVec[ii,numPos]) / normalizingSum
+    
+    pdf[pdf&lt;0] = 0
+    
+    return pdf, stateVec</code></pre>
+</details>
+</dd>
+<dt id="motor.initPDFmod"><code class="name flex">
+<span>def <span class="ident">initPDFmod</span></span>(<span>motor, m, Fload)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initPDFmod(motor,m,Fload):
+    n = Nlocations(m, motor, Fload)
+    
+    &#39;&#39;&#39;
+    Some doubt about what n should be here! look deeper into this.
+    &#39;&#39;&#39;
+    
+#    n = int(2* np.floor(motor.l0/motor.ds) + 1)
+    N = Nconfiguration_detach(n,m)
+    pdf = np.zeros(N,dtype=&#39;float32&#39;)
+    
+    pdf_nz, stateVec = initPDF(motor,m)
+    
+    for ii in range(0,len(pdf_nz)):
+        tempVar = np.zeros(n,dtype=&#39;int16&#39;) #Integer (-32768 to 32767) valued array
+        tempVar[0:len(stateVec[ii][:-2])] = (stateVec[ii][:-2])
+        code = state2code(tempVar)
+        pdf[code-1] = pdf_nz[ii]
+    
+    pdf[pdf&lt;0] = 0
+    return pdf</code></pre>
+</details>
+</dd>
+<dt id="motor.initializePDF"><code class="name flex">
+<span>def <span class="ident">initializePDF</span></span>(<span>motor, m, Fload, Pa)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initializePDF(motor,m,Fload,Pa):
+    n = Nlocations(m, motor, Fload)
+    numMotors = np.empty(0,dtype = &#39;int16&#39;)
+    
+    for nm in range(0,m+1):
+        numMotors = np.append(numMotors, nm*np.ones(Nconfiguration(n,nm)))
+
+    pdf = initPDFmod(motor,m,Fload)   
+    pdf[0] = 1
+    pdf0 = np.zeros(len(pdf))
+    
+    for nm in range(0,m+1):
+        tempVar = pdf * (np.array([ii==nm for ii in numMotors]))
+        tempVar = tempVar / sum(tempVar)
+        value = (np.math.factorial(m)/(np.math.factorial(nm)*np.math.factorial(m-nm))*( (1-Pa)**(m-nm)*Pa**(nm) ))
+        tempVar = tempVar * value
+        pdf0 = pdf0 + tempVar
+        
+    pdf0 = pdf0 / sum(pdf0)
+    pdf0[pdf0&lt;0] = 0
+    
+    return pdf0</code></pre>
+</details>
+</dd>
+<dt id="motor.state2code"><code class="name flex">
+<span>def <span class="ident">state2code</span></span>(<span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def state2code(state):
+    Ns = len(state)
+    n = Ns
+    m = np.sum(state)
+    code = Nconfiguration_detach(n,m-1)
+    
+    state = trimState(state)
+    
+    m = m-state[0]
+    n = n-1
+    
+    for k in range(2,Ns+1):
+        if m&gt;0:
+            code = code + (m&gt;0)*Nconfiguration(n+1,m)
+            m = m - state[k-1]
+            n = n-1
+            
+        else:
+            break
+        
+    code = code + 1
+    
+    return int(code)</code></pre>
+</details>
+</dd>
+<dt id="motor.state2code_new"><code class="name flex">
+<span>def <span class="ident">state2code_new</span></span>(<span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def state2code_new(state):
+    code = 0
+    
+    
+    return code</code></pre>
+</details>
+</dd>
+<dt id="motor.state2pos"><code class="name flex">
+<span>def <span class="ident">state2pos</span></span>(<span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def state2pos(state):
+    pos = np.empty(0)
+
+    for ii in range (1,len(state)+1):
+        if state[ii-1] &gt; 0 :
+            pos = np.append(pos, ii * np.ones(int(state[ii-1])))
+    
+    pos = np.array(pos, dtype=&#39;int&#39;)    
+    return pos</code></pre>
+</details>
+</dd>
+<dt id="motor.trimState"><code class="name flex">
+<span>def <span class="ident">trimState</span></span>(<span>state)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def trimState(state):
+    if np.sum(state) == 0:
+        return state
+    
+    else:
+        while state[0] == 0:
+            state = np.append(state[1:], 0)
+        
+        state = np.array(state, dtype=&#39;int&#39;)    
+        return state</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="motor.motorClass"><code class="flex name class">
+<span>class <span class="ident">motorClass</span></span>
+<span>(</span><span>l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class motorClass:
+    #==========================================================================
+    # Class Variables
+    #==========================================================================
+    
+    # Physical parameters
+    Kb = 1.3806503e-5; # Boltzmann constant in nm^2 kg s^(-2) K^(-1)
+    T = 300 # Temperature in Kelvin
+    # ATP = 2e-3 # ATP concentration in M
+
+    # Bio-chemo-mechanical motion parameters
+    kcat = 105 # s^(-1)
+    kon = 2e6 # M^(-1) s^(-1)
+    k0off = 55 # s^(-1)
+    
+    # Microtubule properties and binding Bio-chemo-mechanical parameters
+    ds = 8 # Periodicity of MT filament in nm
+    dl = 1.6 # nm find explanation for this
+    delta_l = 1.3 # nm find explanation for this
+    A = 107 # Mean step number
+    B = 0.029e-6 # M
+    Pback = 2 # Find explanation for this
+    
+    # Bead parameters (May be used later)
+    bead_r = 250 # Bead radius in nm
+    eta = 0.89e-12; # Coefficient of viscosity for water in Kg/(s nm)
+    Xi = 6*np.pi*eta*bead_r # Friction force Kg/s
+    D = Kb*T/Xi ; # nm^2/s
+    
+    #==========================================================================
+    # Init Function
+    #==========================================================================
+    
+    def __init__(self, l0, Kel, Fs, ATP, Pattach, K_Pd, Pback, motor_type):
+        
+        self.l0 = l0
+        self.Kel = Kel
+        self.Fs = Fs
+        self.ATP = ATP
+        self.Pattach = Pattach
+        self.K_Pd = K_Pd # This is the constant multiplier for Pdetach = K_Pd * Pstep
+        self.Pback = Pback
+        self.motor_type = motor_type
+   
+    #==========================================================================
+    # Probability of stepping
+    # (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def Pstep_2sided(self, Fm):
+        if abs(Fm) &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+            P = 0 # Probability of stepping is 0 for force beyond stall force
+            epsilon = 0
+            return [P, epsilon]
+        
+        # if Fm &lt; 0 and Fm &gt; -1*self.Fs: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+        #     Fm = 0
+        
+        koff = self.k0off * np.exp( (abs(Fm)*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+        km = (self.kcat+koff)/self.kon # M
+        epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+        
+        P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+        
+        P = P*epsilon
+        # if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+        #     P = P*epsilon
+        
+        return [P, epsilon]
+    
+    def Pstep_1sided(self, Fm):
+        if Fm &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+            P = 0 # Probability of stepping is 0 for force beyond stall force
+            epsilon = 0
+            return [P, epsilon]
+        
+        if Fm &lt; 0: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+            Fm = 0
+        
+        koff = self.k0off * np.exp( (Fm*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+        km = (self.kcat+koff)/self.kon # M
+        epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+        
+        P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+        
+        if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+            P = P*epsilon
+        
+        return [P, epsilon]
+    
+    #==========================================================================
+    # Probability of detachment 
+    # (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def Pdetach_old(self, Fm):
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            #P1 = self.B/self.ATP #This is not being used anythere.
+            P2 = (1/self.A)* np.exp(  (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+            
+            P = (((self.ATP/P2)/(self.ATP +self.B*(1+1/P2)))**(-1)) * self.Pstep(Fm)[0]
+            
+            P = max(P,self.Pback)
+        return P
+      
+    def Pdetach_2sided(self, Fm):
+        # k = 0.04 #Original rate from paper
+        # k = 0.01
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            P = self.K_Pd * self.Pstep_2sided(Fm)[0]
+            P = max(P,self.Pback)
+        return P
+    
+    def Pdetach_1sided(self, Fm):
+        # k = 0.04 #Original rate from paper
+        # k = 0.01
+        if abs(Fm) &gt;= self.Fs:
+            P = self.Pback
+        else:
+            P = self.K_Pd * self.Pstep_1sided(Fm)[0]
+            P = max(P,self.Pback)
+        return P
+    
+    #==========================================================================
+    # Efficiency (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    
+    def efficiency(self, Fm):
+        if Fm &lt; 0:
+            Fm = 0
+            
+        e = 1-(Fm/self.Fs)**2
+        
+        
+        
+        if Fm &gt; self.Fs:
+            e = 0
+        
+        e = e*90/100+10/100*np.exp(-2*(Fm/self.Fs)**2) # Comment if not required. Use if a more general expression for efficiency is needed.
+        
+        return e
+    
+    #==========================================================================
+    # Processivity (this is dependent on the force the motor is experiencing)
+    #==========================================================================
+    def processivity(self, Fm):
+
+        P2 = (1/self.A)*np.exp( (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+        L = (self.ds*self.ATP/P2)/(self.ATP +self.B*(1+1/P2))
+        
+        return L
+    
+    #==========================================================================
+    # Spring Force (this is dependent on how much the motor is stretched)
+    #==========================================================================
+    def springForce(self, l):
+
+        F = 0
+        if l &gt; self.l0:
+            F = self.Kel * (l - self.l0)
+        
+        if l &lt; -1*self.l0:
+            F = self.Kel * (l + self.l0)
+            
+        return F</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="motor.motorClass.A"><code class="name">var <span class="ident">A</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.B"><code class="name">var <span class="ident">B</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.D"><code class="name">var <span class="ident">D</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.Kb"><code class="name">var <span class="ident">Kb</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.Pback"><code class="name">var <span class="ident">Pback</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.T"><code class="name">var <span class="ident">T</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.Xi"><code class="name">var <span class="ident">Xi</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.bead_r"><code class="name">var <span class="ident">bead_r</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.delta_l"><code class="name">var <span class="ident">delta_l</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.dl"><code class="name">var <span class="ident">dl</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.ds"><code class="name">var <span class="ident">ds</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.eta"><code class="name">var <span class="ident">eta</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.k0off"><code class="name">var <span class="ident">k0off</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.kcat"><code class="name">var <span class="ident">kcat</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="motor.motorClass.kon"><code class="name">var <span class="ident">kon</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="motor.motorClass.Pdetach_1sided"><code class="name flex">
+<span>def <span class="ident">Pdetach_1sided</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Pdetach_1sided(self, Fm):
+    # k = 0.04 #Original rate from paper
+    # k = 0.01
+    if abs(Fm) &gt;= self.Fs:
+        P = self.Pback
+    else:
+        P = self.K_Pd * self.Pstep_1sided(Fm)[0]
+        P = max(P,self.Pback)
+    return P</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.Pdetach_2sided"><code class="name flex">
+<span>def <span class="ident">Pdetach_2sided</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Pdetach_2sided(self, Fm):
+    # k = 0.04 #Original rate from paper
+    # k = 0.01
+    if abs(Fm) &gt;= self.Fs:
+        P = self.Pback
+    else:
+        P = self.K_Pd * self.Pstep_2sided(Fm)[0]
+        P = max(P,self.Pback)
+    return P</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.Pdetach_old"><code class="name flex">
+<span>def <span class="ident">Pdetach_old</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Pdetach_old(self, Fm):
+    if abs(Fm) &gt;= self.Fs:
+        P = self.Pback
+    else:
+        #P1 = self.B/self.ATP #This is not being used anythere.
+        P2 = (1/self.A)* np.exp(  (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+        
+        P = (((self.ATP/P2)/(self.ATP +self.B*(1+1/P2)))**(-1)) * self.Pstep(Fm)[0]
+        
+        P = max(P,self.Pback)
+    return P</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.Pstep_1sided"><code class="name flex">
+<span>def <span class="ident">Pstep_1sided</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Pstep_1sided(self, Fm):
+    if Fm &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+        P = 0 # Probability of stepping is 0 for force beyond stall force
+        epsilon = 0
+        return [P, epsilon]
+    
+    if Fm &lt; 0: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+        Fm = 0
+    
+    koff = self.k0off * np.exp( (Fm*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+    km = (self.kcat+koff)/self.kon # M
+    epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+    
+    P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+    
+    if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+        P = P*epsilon
+    
+    return [P, epsilon]</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.Pstep_2sided"><code class="name flex">
+<span>def <span class="ident">Pstep_2sided</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def Pstep_2sided(self, Fm):
+    if abs(Fm) &gt; self.Fs: # Force exerted due to stretching the linkage &gt; Stalling force Fs 
+        P = 0 # Probability of stepping is 0 for force beyond stall force
+        epsilon = 0
+        return [P, epsilon]
+    
+    # if Fm &lt; 0 and Fm &gt; -1*self.Fs: # Force exerted due to linkage stretching &lt; 0 --&gt; it is taken equal to 0 i.e. &#34;not stretched&#34; stage
+    #     Fm = 0
+    
+    koff = self.k0off * np.exp( (abs(Fm)*self.dl)/(self.Kb*self.T) ) # s^(-1) ; As per formula of Koff, from ref.paper[7]
+    km = (self.kcat+koff)/self.kon # M
+    epsilon = 1-(Fm/self.Fs)**2 # dimensionless ; epsilon = epsilon(F) i.e. prob. of binding with MT   
+    
+    P = (self.kcat*self.ATP)/(self.ATP+km); # s^(-1)
+    
+    P = P*epsilon
+    # if Fm &gt; 0: # i.e. Force exerted due to linkage stretching is 0&lt;F&lt;Fs
+    #     P = P*epsilon
+    
+    return [P, epsilon]</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.efficiency"><code class="name flex">
+<span>def <span class="ident">efficiency</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def efficiency(self, Fm):
+    if Fm &lt; 0:
+        Fm = 0
+        
+    e = 1-(Fm/self.Fs)**2
+    
+    
+    
+    if Fm &gt; self.Fs:
+        e = 0
+    
+    e = e*90/100+10/100*np.exp(-2*(Fm/self.Fs)**2) # Comment if not required. Use if a more general expression for efficiency is needed.
+    
+    return e</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.processivity"><code class="name flex">
+<span>def <span class="ident">processivity</span></span>(<span>self, Fm)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def processivity(self, Fm):
+
+    P2 = (1/self.A)*np.exp( (0.008/self.Fs)*(abs(Fm)*self.delta_l)/(self.Kb*self.T) )
+    L = (self.ds*self.ATP/P2)/(self.ATP +self.B*(1+1/P2))
+    
+    return L</code></pre>
+</details>
+</dd>
+<dt id="motor.motorClass.springForce"><code class="name flex">
+<span>def <span class="ident">springForce</span></span>(<span>self, l)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def springForce(self, l):
+
+    F = 0
+    if l &gt; self.l0:
+        F = self.Kel * (l - self.l0)
+    
+    if l &lt; -1*self.l0:
+        F = self.Kel * (l + self.l0)
+        
+    return F</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="motor.Nconfiguration" href="#motor.Nconfiguration">Nconfiguration</a></code></li>
+<li><code><a title="motor.Nconfiguration_detach" href="#motor.Nconfiguration_detach">Nconfiguration_detach</a></code></li>
+<li><code><a title="motor.Nlocations" href="#motor.Nlocations">Nlocations</a></code></li>
+<li><code><a title="motor.Nlocations_old" href="#motor.Nlocations_old">Nlocations_old</a></code></li>
+<li><code><a title="motor.code2fullState" href="#motor.code2fullState">code2fullState</a></code></li>
+<li><code><a title="motor.code2state" href="#motor.code2state">code2state</a></code></li>
+<li><code><a title="motor.createMotor" href="#motor.createMotor">createMotor</a></code></li>
+<li><code><a title="motor.dummySpringForce" href="#motor.dummySpringForce">dummySpringForce</a></code></li>
+<li><code><a title="motor.dummy_eqm_cargo" href="#motor.dummy_eqm_cargo">dummy_eqm_cargo</a></code></li>
+<li><code><a title="motor.eqm_cargo" href="#motor.eqm_cargo">eqm_cargo</a></code></li>
+<li><code><a title="motor.eqm_cargo_modified" href="#motor.eqm_cargo_modified">eqm_cargo_modified</a></code></li>
+<li><code><a title="motor.equilibrium_cargo" href="#motor.equilibrium_cargo">equilibrium_cargo</a></code></li>
+<li><code><a title="motor.equilibrium_cargo_modified" href="#motor.equilibrium_cargo_modified">equilibrium_cargo_modified</a></code></li>
+<li><code><a title="motor.getColumn" href="#motor.getColumn">getColumn</a></code></li>
+<li><code><a title="motor.getTransitionMatrix" href="#motor.getTransitionMatrix">getTransitionMatrix</a></code></li>
+<li><code><a title="motor.getTransitionMatrix_2sided" href="#motor.getTransitionMatrix_2sided">getTransitionMatrix_2sided</a></code></li>
+<li><code><a title="motor.getTransitionMatrix_relSpace" href="#motor.getTransitionMatrix_relSpace">getTransitionMatrix_relSpace</a></code></li>
+<li><code><a title="motor.get_force_array" href="#motor.get_force_array">get_force_array</a></code></li>
+<li><code><a title="motor.get_pos_freq" href="#motor.get_pos_freq">get_pos_freq</a></code></li>
+<li><code><a title="motor.get_unique_pos" href="#motor.get_unique_pos">get_unique_pos</a></code></li>
+<li><code><a title="motor.initPDF" href="#motor.initPDF">initPDF</a></code></li>
+<li><code><a title="motor.initPDFmod" href="#motor.initPDFmod">initPDFmod</a></code></li>
+<li><code><a title="motor.initializePDF" href="#motor.initializePDF">initializePDF</a></code></li>
+<li><code><a title="motor.state2code" href="#motor.state2code">state2code</a></code></li>
+<li><code><a title="motor.state2code_new" href="#motor.state2code_new">state2code_new</a></code></li>
+<li><code><a title="motor.state2pos" href="#motor.state2pos">state2pos</a></code></li>
+<li><code><a title="motor.trimState" href="#motor.trimState">trimState</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="motor.motorClass" href="#motor.motorClass">motorClass</a></code></h4>
+<ul class="two-column">
+<li><code><a title="motor.motorClass.A" href="#motor.motorClass.A">A</a></code></li>
+<li><code><a title="motor.motorClass.B" href="#motor.motorClass.B">B</a></code></li>
+<li><code><a title="motor.motorClass.D" href="#motor.motorClass.D">D</a></code></li>
+<li><code><a title="motor.motorClass.Kb" href="#motor.motorClass.Kb">Kb</a></code></li>
+<li><code><a title="motor.motorClass.Pback" href="#motor.motorClass.Pback">Pback</a></code></li>
+<li><code><a title="motor.motorClass.Pdetach_1sided" href="#motor.motorClass.Pdetach_1sided">Pdetach_1sided</a></code></li>
+<li><code><a title="motor.motorClass.Pdetach_2sided" href="#motor.motorClass.Pdetach_2sided">Pdetach_2sided</a></code></li>
+<li><code><a title="motor.motorClass.Pdetach_old" href="#motor.motorClass.Pdetach_old">Pdetach_old</a></code></li>
+<li><code><a title="motor.motorClass.Pstep_1sided" href="#motor.motorClass.Pstep_1sided">Pstep_1sided</a></code></li>
+<li><code><a title="motor.motorClass.Pstep_2sided" href="#motor.motorClass.Pstep_2sided">Pstep_2sided</a></code></li>
+<li><code><a title="motor.motorClass.T" href="#motor.motorClass.T">T</a></code></li>
+<li><code><a title="motor.motorClass.Xi" href="#motor.motorClass.Xi">Xi</a></code></li>
+<li><code><a title="motor.motorClass.bead_r" href="#motor.motorClass.bead_r">bead_r</a></code></li>
+<li><code><a title="motor.motorClass.delta_l" href="#motor.motorClass.delta_l">delta_l</a></code></li>
+<li><code><a title="motor.motorClass.dl" href="#motor.motorClass.dl">dl</a></code></li>
+<li><code><a title="motor.motorClass.ds" href="#motor.motorClass.ds">ds</a></code></li>
+<li><code><a title="motor.motorClass.efficiency" href="#motor.motorClass.efficiency">efficiency</a></code></li>
+<li><code><a title="motor.motorClass.eta" href="#motor.motorClass.eta">eta</a></code></li>
+<li><code><a title="motor.motorClass.k0off" href="#motor.motorClass.k0off">k0off</a></code></li>
+<li><code><a title="motor.motorClass.kcat" href="#motor.motorClass.kcat">kcat</a></code></li>
+<li><code><a title="motor.motorClass.kon" href="#motor.motorClass.kon">kon</a></code></li>
+<li><code><a title="motor.motorClass.processivity" href="#motor.motorClass.processivity">processivity</a></code></li>
+<li><code><a title="motor.motorClass.springForce" href="#motor.motorClass.springForce">springForce</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
