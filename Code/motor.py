@@ -3,6 +3,7 @@
 Created on Mon Dec 30 16:23:21 2019
 
 Author: Rachit Shrivastava
+
 Based in the algorithm presented in:
     Materassi, Donatello, Subhrajit Roychowdhury, Thomas Hays, and Murti Salapaka. "An exact approach for studying cargo transport by an ensemble of molecular motors." BMC biophysics 6, no. 1 (2013): 1-18.
 
