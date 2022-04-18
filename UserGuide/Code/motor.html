@@ -23,8 +23,8 @@
 </header>
 <section id="section-intro">
 <p>Created on Mon Dec 30 16:23:21 2019</p>
-<p>Author: Rachit Shrivastava
-Based in the algorithm presented in:
+<p>Author: Rachit Shrivastava</p>
+<p>Based in the algorithm presented in:
 Materassi, Donatello, Subhrajit Roychowdhury, Thomas Hays, and Murti Salapaka. "An exact approach for studying cargo transport by an ensemble of molecular motors." BMC biophysics 6, no. 1 (2013): 1-18.</p>
 <p>MEASURE SYSTEM
 nm for length
@@ -42,6 +42,7 @@ nN for force</p>
 Created on Mon Dec 30 16:23:21 2019
 
 Author: Rachit Shrivastava
+
 Based in the algorithm presented in:
     Materassi, Donatello, Subhrajit Roychowdhury, Thomas Hays, and Murti Salapaka. &#34;An exact approach for studying cargo transport by an ensemble of molecular motors.&#34; BMC biophysics 6, no. 1 (2013): 1-18.
 
@@ -230,10 +231,11 @@ def createMotor(l0, Kel, Fs, ATP, Pattach, motor_type):
    return k
 
 #==============================================================================
-# Function to find number of locations (or extent) given max number of motors,
-# rest length, periodicity of filament, stall force, and spring constant
-#==============================================================================
 def Nlocations_old(m,l0,ds,Fs,Kel,Fm):
+    &#34;&#34;&#34;
+    ##Redundant function
+
+    &#34;&#34;&#34;
     
     dmax1 = (m*Fs-Fm)/Kel + ds
     dmax2 = Fm/Kel
@@ -244,7 +246,27 @@ def Nlocations_old(m,l0,ds,Fs,Kel,Fm):
     
     return int(n)
 
+#==============================================================================
 def Nlocations(m, motor, Fm):
+    &#34;&#34;&#34;
+    ## Function to find number of locations (or extent) given max number of 
+    motors rest length, periodicity of filament, stall force, and spring constant
+
+    Parameters
+    ----------
+    m : TYPE: int
+        DESCRIPTION: number of motors
+    motor : object of class motorClass
+    Fm : TYPE: float
+        DESCRIPTION: Load force on cargo
+
+    Returns
+    -------
+    TYPE: int
+        DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors
+
+    &#34;&#34;&#34;
+    
     
     dmax1 = (m*motor.Fs-Fm)/motor.Kel + motor.ds
     dmax2 = Fm/motor.Kel
@@ -256,10 +278,27 @@ def Nlocations(m, motor, Fm):
     return int(n)
 
 #==============================================================================
-# Function to determine number of configurations EXACTLY given m motors 
-# and n locations
-#==============================================================================
 def Nconfiguration(n,m):
+    &#34;&#34;&#34;
+    ## Function to determine number of configurations EXACTLY given m motors and n locations
+    
+    ### Easier Implementation
+     N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))
+
+    Parameters
+    ----------
+    n : TYPE: int
+        DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors
+    m : TYPE: int
+        DESCRIPTION: number of motors
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    &#34;&#34;&#34;
+    
     if m &lt; 0:
         N = 0
         
@@ -273,14 +312,14 @@ def Nconfiguration(n,m):
         N = N/ np.math.factorial(m-1)
     return int(N)
 
-    #Easier Implementation
-    # N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))
+
     
 #==============================================================================    
-# Function to determine total number of relative configurations EXACTLY
-# given atmost m motors on cargo and n locations
-#==============================================================================
 def Nconfiguration_detach(n,m):
+    &#34;&#34;&#34;
+    ## Function to determine total number of relative configurations EXACTLY given atmost m motors on cargo and n locations
+    &#34;&#34;&#34;
+
     N = 0
     for ii in range (0,m+1):
         N = N + Nconfiguration(n,ii)
@@ -289,12 +328,15 @@ def Nconfiguration_detach(n,m):
 
 
 #==============================================================================    
-# Function to determine the exact state given the code of the state
-# Inputs are code = value from 1 to N (for total N relative configurations)
-# i.e. code = no. of some relative configuration
-# and n = bound on extent
-#==============================================================================
 def code2state(code,n):
+    &#34;&#34;&#34;
+    ## Function to determine the exact state given the code of the state
+    
+    ## Inputs:
+        code = value from 1 to N (for total N relative configurations) i.e. code = no. of some relative configuration
+        n = bound on extent
+
+    &#34;&#34;&#34;
     
     Ns = n # Bound on extent
     m = 0
@@ -336,9 +378,21 @@ def code2state(code,n):
 
 
 #==============================================================================
-# Trim State function to obtain a trimmed state
-#==============================================================================   
 def trimState(state):
+    &#34;&#34;&#34;
+    ## Trim State function to obtain a trimmed state 
+
+    Parameters
+    ----------
+    state : TYPE: numpy array
+        DESCRIPTION: array of motor positions
+
+    Returns
+    -------
+    state : Trimmed state
+
+    &#34;&#34;&#34;
+    
     if np.sum(state) == 0:
         return state
     
@@ -351,16 +405,19 @@ def trimState(state):
 
 
 #==============================================================================    
-# Function to determine the code for a state given the state
-# Input is a state vector
-        
-# N = enumerate_combination_rep(s)
-# s is a vector of non-negative integers representing the number of
-# agents in Ns positions; Ns=n from before
-# m represents the maximum number of agents
-# a combination of (#&#39;0&#39;s) objects chosen with repetition from (#&#39;1&#39;s+1) positions
-#==============================================================================
 def state2code(state):
+    &#34;&#34;&#34;
+    ## Function to determine the code for a state given the state
+    Input is a state vector
+            
+    N = enumerate_combination_rep(s)
+    s is a vector of non-negative integers representing the number of
+    agents in Ns positions; Ns=n from before
+    m represents the maximum number of agents
+    a combination of (#&#39;0&#39;s) objects chosen with repetition from (#&#39;1&#39;s+1) positions
+    
+    &#34;&#34;&#34;
+
     Ns = len(state)
     n = Ns
     m = np.sum(state)
@@ -395,27 +452,33 @@ def state2pos(state):
 
   
 #==============================================================================    
-# A wrong springForce implementation is used in previous code, this function is
-# just recreation of the &#34;wrong&#34; function in python in order to check the 
-# validity of other functions like eqm_cargo and state2pos
-#==============================================================================
 def dummySpringForce(l,Kel,l0):
+    &#34;&#34;&#34;
+    A wrong springForce implementation is used in previous code, this function is just recreation of the &#34;wrong&#34; function in python in order to check the 
+    validity of other functions like eqm_cargo and state2pos
 
-        F = 0
-        if l &gt; l0:
-            F = Kel * (l - l0)
+    &#34;&#34;&#34;
+
+    F = 0
+    if l &gt; l0:
+        F = Kel * (l - l0)
+    
+    if l &lt; -l0:
+        F = Kel * (l + l0)
         
-        if l &lt; -l0:
-            F = Kel * (l + l0)
-            
-        return F
+    return F
 
-#==============================================================================
-# Approx Function for determining cargo equilibrium position given the  
-# configuration of motors with no load force
-# This is the corrected version of eqm_cargo, however it is not used. 
-#==============================================================================     
+#==============================================================================  
 def eqm_cargo(motor, p, Fload, tol = 1e-6):
+
+    &#34;&#34;&#34;
+    ## Approx Function for determining cargo equilibrium position given the configuration of motors with no load force.
+    
+    This is the corrected version of eqm_cargo, however it is not used. 
+
+    &#34;&#34;&#34;
+#==============================================================================   
+    
     p = p*motor.ds
     p = np.sort(p)
     n = len(p)
@@ -454,13 +517,18 @@ def eqm_cargo(motor, p, Fload, tol = 1e-6):
     return x
 
 #==============================================================================
-# Approximate Function for determining cargo equilibrium position given  
-# the configuration of motors with no load force
-# This is the&#34;wrong&#34; version of eqm_cargo which is the same as 
-# Donatello&#39;s implementation. This uses dummySpringForce function and this was 
-# written just to check the validity of python engine.
-#============================================================================== 
 def dummy_eqm_cargo(motor, p, Fload, tol = 1e-6):
+   
+    
+    &#34;&#34;&#34;
+    ## Approximate Function for determining cargo equilibrium position given the configuration of motors with no load force.
+    
+    This is the&#34;wrong&#34; version of eqm_cargo which is the same as 
+    Donatello&#39;s implementation. This uses dummySpringForce function and this was 
+    written just to check the validity of python engine.
+    
+    &#34;&#34;&#34;
+    
     p = motor.ds*p
     p = np.sort(p)
     n = len(p)
@@ -497,23 +565,25 @@ def dummy_eqm_cargo(motor, p, Fload, tol = 1e-6):
             xlow = x
     return x
 
-#==============================================================================
-# Exact Function for determining cargo equilibrium position given the  
-# configuration of motors. This is the actual function which is used in
-# calculating transition matrix i.e. in upcoming function trans_mat_general
-    
-&#39;&#39;&#39;
- synopsis:
- eq=equilibrium_cargo(p,Kel,l0,F0)
- ---
- p is a vector containing the positions of the motors
- Kel is the elastic constant of the linkages
- l0 is the rest length of the linkages
- FLoad is the load applied on the cargo
 
-&#39;&#39;&#39;
-#============================================================================== 
 def equilibrium_cargo(motor, p, Fload, tol = 1e-6):
+    #==============================================================================
+    &#34;&#34;&#34;
+    
+    ## Exact Function for determining cargo equilibrium position given the  
+    configuration of motors. This is the actual function which is used in
+    calculating transition matrix i.e. in upcoming function trans_mat_general
+        
+    ## Synopsis:
+     eq=equilibrium_cargo(p,Kel,l0,F0)
+     ---
+     p is a vector containing the positions of the motors
+     Kel is the elastic constant of the linkages
+     l0 is the rest length of the linkages
+     FLoad is the load applied on the cargo
+    
+    &#34;&#34;&#34;
+    #============================================================================== 
     p = p*motor.ds
     p = np.sort(p)
     
@@ -566,14 +636,17 @@ def equilibrium_cargo(motor, p, Fload, tol = 1e-6):
 #==============================================================================
 # Function to calculate transition matrix. This is the main function 
 # [A n D Psingle self_state StepStat, ProbCargoStep] = trans_mat_general(motor, F, m)
-&#39;&#39;&#39;
-This function takes in the motor parameters, load force and number of motors
-to give out a N by N transition matrix where N is the maximum number of relative
-configurations given maximum m number of motors are present on the cargo.
 
-&#39;&#39;&#39;
 #============================================================================== 
 def getTransitionMatrix(motor, Fload, m, tol):
+    
+    &#34;&#34;&#34;
+    This function takes in the motor parameters, load force and number of motors
+    to give out a N by N transition matrix where N is the maximum number of relative
+    configurations given maximum m number of motors are present on the cargo.
+    
+    &#34;&#34;&#34;
+    
     Psingle = []
     selfState = []
     
@@ -814,22 +887,28 @@ def initializePDF(motor,m,Fload,Pa):
 
 #%% Function to obtain plot for average runlengths vs load force
 
-&#34;&#34;&#34;
-Function to obtain plot for average runlengths vs load force.
-
-Input variables:
-motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
-mrange - type: array of integeres - example: mrange = range(2,4)
-Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
-    - Range of load force user wants to simulate, must start with a non zero float
-Tend - type: int - Total time horizon for simulation, set default to 100 seconds - example: Tend = 100
-save - type: Boolian - User input to save figure generated
-tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
-
-&#34;&#34;&#34;
-
 def getRunVsFload(motor, mrange, Frange, Tend = 100, save = False, tol = 1e-6):
     
+    &#34;&#34;&#34;
+    Function to obtain plot for average runlengths vs load force.
+    
+    Input variables:
+    
+        motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+        
+        mrange - type: array of integeres - example: mrange = range(2,4)
+    
+        Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+        - Range of load force user wants to simulate, must start with a non zero float
+    
+        Tend - type: int - Total time horizon for simulation, set default to 100 seconds - example: Tend = 100
+    
+        save - type: Boolian - User input to save figure generated
+    
+        tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+    
+    &#34;&#34;&#34;
+        
     dt = 0.002
     trange = np.arange(0,Tend,dt)
     
@@ -878,21 +957,27 @@ def getRunVsFload(motor, mrange, Frange, Tend = 100, save = False, tol = 1e-6):
 
 #%% Function to obtain plot for average velocities vs load force
 
-&#34;&#34;&#34;
-Function to obtain plot for average runlengths vs load force.
-
-Input variables:
-motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
-mrange - type: array of integeres - example: mrange = range(2,4)
-Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
-    - Range of load force user wants to simulate, must start with a non zero float
-save - type: Boolian - User input to save figure generated
-tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
-
-&#34;&#34;&#34;
-
 def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
-
+    
+    
+    &#34;&#34;&#34;
+    Function to obtain plot for average runlengths vs load force.
+    
+    Input variables:
+    
+        motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+    
+        mrange - type: array of integeres - example: mrange = range(2,4)
+    
+        Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+        - Range of load force user wants to simulate, must start with a non zero float
+    
+        save - type: Boolian - User input to save figure generated
+   
+        tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+    
+    &#34;&#34;&#34;
+    
     for m in mrange:
         start = time.time()
         avg_vel = np.empty(0)
@@ -948,12 +1033,46 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">Nconfiguration</span></span>(<span>n, m)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function-to-determine-number-of-configurations-exactly-given-m-motors-and-n-locations">Function to determine number of configurations EXACTLY given m motors and n locations</h2>
+<h3 id="easier-implementation">Easier Implementation</h3>
+<p>N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>n</code></strong> :&ensp;<code>TYPE: int</code></dt>
+<dd>DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors</dd>
+<dt><strong><code>m</code></strong> :&ensp;<code>TYPE: int</code></dt>
+<dd>DESCRIPTION: number of motors</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>TYPE</code></dt>
+<dd>DESCRIPTION.</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Nconfiguration(n,m):
+    &#34;&#34;&#34;
+    ## Function to determine number of configurations EXACTLY given m motors and n locations
+    
+    ### Easier Implementation
+     N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))
+
+    Parameters
+    ----------
+    n : TYPE: int
+        DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors
+    m : TYPE: int
+        DESCRIPTION: number of motors
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    &#34;&#34;&#34;
+    
     if m &lt; 0:
         N = 0
         
@@ -965,22 +1084,23 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
         for ii in range (n,n+m-1):
             N = N*ii
         N = N/ np.math.factorial(m-1)
-    return int(N)
-
-    #Easier Implementation
-    # N = np.math.factorial(n+m-2)/(np.math.factorial(n-1)*np.math.factorial(m-1))</code></pre>
+    return int(N)</code></pre>
 </details>
 </dd>
 <dt id="Code.motor.Nconfiguration_detach"><code class="name flex">
 <span>def <span class="ident">Nconfiguration_detach</span></span>(<span>n, m)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function-to-determine-total-number-of-relative-configurations-exactly-given-atmost-m-motors-on-cargo-and-n-locations">Function to determine total number of relative configurations EXACTLY given atmost m motors on cargo and n locations</h2></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Nconfiguration_detach(n,m):
+    &#34;&#34;&#34;
+    ## Function to determine total number of relative configurations EXACTLY given atmost m motors on cargo and n locations
+    &#34;&#34;&#34;
+
     N = 0
     for ii in range (0,m+1):
         N = N + Nconfiguration(n,ii)
@@ -992,12 +1112,46 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">Nlocations</span></span>(<span>m, motor, Fm)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function-to-find-number-of-locations-or-extent-given-max-number-of">Function to find number of locations (or extent) given max number of</h2>
+<p>motors rest length, periodicity of filament, stall force, and spring constant</p>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>m</code></strong> :&ensp;<code>TYPE: int</code></dt>
+<dd>DESCRIPTION: number of motors</dd>
+<dt><strong><code>motor</code></strong> :&ensp;<code>object</code> of <code>class <a title="Code.motor.motorClass" href="#Code.motor.motorClass">motorClass</a></code></dt>
+<dd>&nbsp;</dd>
+<dt><strong><code>Fm</code></strong> :&ensp;<code>TYPE: float</code></dt>
+<dd>DESCRIPTION: Load force on cargo</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>TYPE</code></strong> :&ensp;<code>int</code></dt>
+<dd>DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Nlocations(m, motor, Fm):
+    &#34;&#34;&#34;
+    ## Function to find number of locations (or extent) given max number of 
+    motors rest length, periodicity of filament, stall force, and spring constant
+
+    Parameters
+    ----------
+    m : TYPE: int
+        DESCRIPTION: number of motors
+    motor : object of class motorClass
+    Fm : TYPE: float
+        DESCRIPTION: Load force on cargo
+
+    Returns
+    -------
+    TYPE: int
+        DESCRIPTION: Maximum number of locations (extent) between vanguard and rearguard motors
+
+    &#34;&#34;&#34;
+    
     
     dmax1 = (m*motor.Fs-Fm)/motor.Kel + motor.ds
     dmax2 = Fm/motor.Kel
@@ -1013,12 +1167,16 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">Nlocations_old</span></span>(<span>m, l0, ds, Fs, Kel, Fm)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="redundant-function">Redundant function</h2></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def Nlocations_old(m,l0,ds,Fs,Kel,Fm):
+    &#34;&#34;&#34;
+    ##Redundant function
+
+    &#34;&#34;&#34;
     
     dmax1 = (m*Fs-Fm)/Kel + ds
     dmax2 = Fm/Kel
@@ -1034,12 +1192,24 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">code2state</span></span>(<span>code, n)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function-to-determine-the-exact-state-given-the-code-of-the-state">Function to determine the exact state given the code of the state</h2>
+<h2 id="inputs">Inputs:</h2>
+<pre><code>code = value from 1 to N (for total N relative configurations) i.e. code = no. of some relative configuration
+n = bound on extent
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def code2state(code,n):
+    &#34;&#34;&#34;
+    ## Function to determine the exact state given the code of the state
+    
+    ## Inputs:
+        code = value from 1 to N (for total N relative configurations) i.e. code = no. of some relative configuration
+        n = bound on extent
+
+    &#34;&#34;&#34;
     
     Ns = n # Bound on extent
     m = 0
@@ -1098,33 +1268,53 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">dummySpringForce</span></span>(<span>l, Kel, l0)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>A wrong springForce implementation is used in previous code, this function is just recreation of the "wrong" function in python in order to check the
+validity of other functions like eqm_cargo and state2pos</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def dummySpringForce(l,Kel,l0):
+    &#34;&#34;&#34;
+    A wrong springForce implementation is used in previous code, this function is just recreation of the &#34;wrong&#34; function in python in order to check the 
+    validity of other functions like eqm_cargo and state2pos
 
-        F = 0
-        if l &gt; l0:
-            F = Kel * (l - l0)
+    &#34;&#34;&#34;
+
+    F = 0
+    if l &gt; l0:
+        F = Kel * (l - l0)
+    
+    if l &lt; -l0:
+        F = Kel * (l + l0)
         
-        if l &lt; -l0:
-            F = Kel * (l + l0)
-            
-        return F</code></pre>
+    return F</code></pre>
 </details>
 </dd>
 <dt id="Code.motor.dummy_eqm_cargo"><code class="name flex">
 <span>def <span class="ident">dummy_eqm_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="approximate-function-for-determining-cargo-equilibrium-position-given-the-configuration-of-motors-with-no-load-force">Approximate Function for determining cargo equilibrium position given the configuration of motors with no load force.</h2>
+<p>This is the"wrong" version of eqm_cargo which is the same as
+Donatello's implementation. This uses dummySpringForce function and this was
+written just to check the validity of python engine.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def dummy_eqm_cargo(motor, p, Fload, tol = 1e-6):
+   
+    
+    &#34;&#34;&#34;
+    ## Approximate Function for determining cargo equilibrium position given the configuration of motors with no load force.
+    
+    This is the&#34;wrong&#34; version of eqm_cargo which is the same as 
+    Donatello&#39;s implementation. This uses dummySpringForce function and this was 
+    written just to check the validity of python engine.
+    
+    &#34;&#34;&#34;
+    
     p = motor.ds*p
     p = np.sort(p)
     n = len(p)
@@ -1166,12 +1356,22 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">eqm_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="approx-function-for-determining-cargo-equilibrium-position-given-the-configuration-of-motors-with-no-load-force">Approx Function for determining cargo equilibrium position given the configuration of motors with no load force.</h2>
+<p>This is the corrected version of eqm_cargo, however it is not used.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eqm_cargo(motor, p, Fload, tol = 1e-6):
+
+    &#34;&#34;&#34;
+    ## Approx Function for determining cargo equilibrium position given the configuration of motors with no load force.
+    
+    This is the corrected version of eqm_cargo, however it is not used. 
+
+    &#34;&#34;&#34;
+#==============================================================================   
+    
     p = p*motor.ds
     p = np.sort(p)
     n = len(p)
@@ -1214,12 +1414,38 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">equilibrium_cargo</span></span>(<span>motor, p, Fload, tol=1e-06)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="exact-function-for-determining-cargo-equilibrium-position-given-the">Exact Function for determining cargo equilibrium position given the</h2>
+<p>configuration of motors. This is the actual function which is used in
+calculating transition matrix i.e. in upcoming function trans_mat_general</p>
+<h2 id="synopsis">Synopsis:</h2>
+<p>eq=equilibrium_cargo(p,Kel,l0,F0)</p>
+<hr>
+<p>p is a vector containing the positions of the motors
+Kel is the elastic constant of the linkages
+l0 is the rest length of the linkages
+FLoad is the load applied on the cargo</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def equilibrium_cargo(motor, p, Fload, tol = 1e-6):
+    #==============================================================================
+    &#34;&#34;&#34;
+    
+    ## Exact Function for determining cargo equilibrium position given the  
+    configuration of motors. This is the actual function which is used in
+    calculating transition matrix i.e. in upcoming function trans_mat_general
+        
+    ## Synopsis:
+     eq=equilibrium_cargo(p,Kel,l0,F0)
+     ---
+     p is a vector containing the positions of the motors
+     Kel is the elastic constant of the linkages
+     l0 is the rest length of the linkages
+     FLoad is the load applied on the cargo
+    
+    &#34;&#34;&#34;
+    #============================================================================== 
     p = p*motor.ds
     p = np.sort(p)
     
@@ -1291,13 +1517,47 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">getRunVsFload</span></span>(<span>motor, mrange, Frange, Tend=100, save=False, tol=1e-06)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Function to obtain plot for average runlengths vs load force.</p>
+<p>Input variables:</p>
+<pre><code>motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+
+mrange - type: array of integeres - example: mrange = range(2,4)
+
+Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+- Range of load force user wants to simulate, must start with a non zero float
+
+Tend - type: int - Total time horizon for simulation, set default to 100 seconds - example: Tend = 100
+
+save - type: Boolian - User input to save figure generated
+
+tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def getRunVsFload(motor, mrange, Frange, Tend = 100, save = False, tol = 1e-6):
     
+    &#34;&#34;&#34;
+    Function to obtain plot for average runlengths vs load force.
+    
+    Input variables:
+    
+        motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+        
+        mrange - type: array of integeres - example: mrange = range(2,4)
+    
+        Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+        - Range of load force user wants to simulate, must start with a non zero float
+    
+        Tend - type: int - Total time horizon for simulation, set default to 100 seconds - example: Tend = 100
+    
+        save - type: Boolian - User input to save figure generated
+    
+        tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+    
+    &#34;&#34;&#34;
+        
     dt = 0.002
     trange = np.arange(0,Tend,dt)
     
@@ -1349,12 +1609,22 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">getTransitionMatrix</span></span>(<span>motor, Fload, m, tol)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>This function takes in the motor parameters, load force and number of motors
+to give out a N by N transition matrix where N is the maximum number of relative
+configurations given maximum m number of motors are present on the cargo.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def getTransitionMatrix(motor, Fload, m, tol):
+    
+    &#34;&#34;&#34;
+    This function takes in the motor parameters, load force and number of motors
+    to give out a N by N transition matrix where N is the maximum number of relative
+    configurations given maximum m number of motors are present on the cargo.
+    
+    &#34;&#34;&#34;
+    
     Psingle = []
     selfState = []
     
@@ -1492,13 +1762,44 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">getVelVsFload</span></span>(<span>motor, mrange, Frange, save=False, tol=1e-06)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Function to obtain plot for average runlengths vs load force.</p>
+<p>Input variables:</p>
+<pre><code>motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+
+mrange - type: array of integeres - example: mrange = range(2,4)
+
+Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+- Range of load force user wants to simulate, must start with a non zero float
+
+save - type: Boolian - User input to save figure generated
+
+tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+</code></pre></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
-
+    
+    
+    &#34;&#34;&#34;
+    Function to obtain plot for average runlengths vs load force.
+    
+    Input variables:
+    
+        motor - object of class motorClass - example: motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+    
+        mrange - type: array of integeres - example: mrange = range(2,4)
+    
+        Frange - type: numpy array - example: Frange = np.arange(0.002,0.012,0.002) 
+        - Range of load force user wants to simulate, must start with a non zero float
+    
+        save - type: Boolian - User input to save figure generated
+   
+        tol - tolerance for calculating equilibrium position of cargo, default = 1e-6
+    
+    &#34;&#34;&#34;
+    
     for m in mrange:
         start = time.time()
         avg_vel = np.empty(0)
@@ -1671,12 +1972,30 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">state2code</span></span>(<span>state)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="function-to-determine-the-code-for-a-state-given-the-state">Function to determine the code for a state given the state</h2>
+<p>Input is a state vector</p>
+<p>N = enumerate_combination_rep(s)
+s is a vector of non-negative integers representing the number of
+agents in Ns positions; Ns=n from before
+m represents the maximum number of agents
+a combination of (#'0's) objects chosen with repetition from (#'1's+1) positions</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def state2code(state):
+    &#34;&#34;&#34;
+    ## Function to determine the code for a state given the state
+    Input is a state vector
+            
+    N = enumerate_combination_rep(s)
+    s is a vector of non-negative integers representing the number of
+    agents in Ns positions; Ns=n from before
+    m represents the maximum number of agents
+    a combination of (#&#39;0&#39;s) objects chosen with repetition from (#&#39;1&#39;s+1) positions
+    
+    &#34;&#34;&#34;
+
     Ns = len(state)
     n = Ns
     m = np.sum(state)
@@ -1721,12 +2040,36 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 <span>def <span class="ident">trimState</span></span>(<span>state)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><h2 id="trim-state-function-to-obtain-a-trimmed-state">Trim State function to obtain a trimmed state</h2>
+<h2 id="parameters">Parameters</h2>
+<dl>
+<dt><strong><code>state</code></strong> :&ensp;<code>TYPE: numpy array</code></dt>
+<dd>DESCRIPTION: array of motor positions</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><strong><code>state</code></strong> :&ensp;<code>Trimmed state</code></dt>
+<dd>&nbsp;</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def trimState(state):
+    &#34;&#34;&#34;
+    ## Trim State function to obtain a trimmed state 
+
+    Parameters
+    ----------
+    state : TYPE: numpy array
+        DESCRIPTION: array of motor positions
+
+    Returns
+    -------
+    state : Trimmed state
+
+    &#34;&#34;&#34;
+    
     if np.sum(state) == 0:
         return state
     
