@@ -607,7 +607,7 @@ def getTransitionMatrix(motor, Fload, m, tol):
     #==================== Compute Detachmemt Transition rates =================
         for ii in range(0,n):
             if state[ii] > 0:
-                Fm = motor.springForce((ii+1)*ds - x_c)
+                Fm = motor.springForce((ii+1)*motor.ds - x_c)
                 newState = np.copy(state)
                 newState[ii] = newState[ii] - 1 
                 # detachment event occured, new state obtained
@@ -897,24 +897,4 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
 
     return fig
 
-#%%
-l0 = 110
-Kel = 0.32e-3
-ds = 8
-Fs = 0.006
-Pattach = 5
-motor_type = 'kinesin'
-Fload = 0.002
-m = 2
-tol = 1e-6
-ATP = 0.002
-K_Pd = 0.04
-Pback = 2
-motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
-mrange = range(2,3)
-Frange = np.arange(0.003,0.012,0.003)
-Tend = 10
-
-fig1 = getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6)
-fig2 = getRunVsFload(motor, mrange, Frange, Tend, save = False, tol = 1e-6)
 
