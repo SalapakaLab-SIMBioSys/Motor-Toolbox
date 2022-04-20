@@ -6,6 +6,13 @@ See motor_Example.py
 
 To open the UserGuide, clone the Motor-Toolbox reppsitory and open the html files in any browser.
 
+## Example Plots
+
+### For Kinesin
+![runLengthVsFload](https://user-images.githubusercontent.com/52796974/164310588-a65dae94-63aa-42cb-ba0d-18d0d267c2a7.png)
+![velVsFload](https://user-images.githubusercontent.com/52796974/164310592-8d0b4a01-8bc1-41f2-b7dd-3def255be59c.png)
+
+
 ## Citation 
 To cite SDA, please use the following publications:
 
