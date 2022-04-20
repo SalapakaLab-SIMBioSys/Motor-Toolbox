@@ -905,7 +905,7 @@ def getRunVsFload(motor, mrange, Frange, Tend = 100, save = False, tol = 1e-6):
         print('time elapsed to plot runlength for motor number =', m, 'is', "%.2f" % (end-start), 'seconds')
         
         fig = plt.figure(1)
-        plt.plot(Frange, runLength_Tinf, marker = "*", label = 'No. of Motors = {}'.format(str(m)))
+        plt.semilogy(Frange, runLength_Tinf, marker = "*", label = 'No. of Motors = {}'.format(str(m)))
         plt.grid(True)
         fig.suptitle('Runlength vs Load Force')
         plt.xlabel('Force (pN)')
@@ -975,6 +975,8 @@ def getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6):
         fig.suptitle('Velocity vs Load Force')
         plt.xlabel('Force (pN)')
         plt.ylabel('Average Velocity (nm)')
+        bottom,top = plt.ylim()
+        plt.ylim((0,top))
         plt.legend()   
         
         if save:

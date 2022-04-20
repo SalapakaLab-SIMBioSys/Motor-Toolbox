@@ -58,12 +58,7 @@ Define Simulation Parameters:
 # Importing packages
 #==============================================================================
 import numpy as np
-from scipy import sparse
-from scipy import linalg
-import matplotlib.pyplot as plt
-import time as time
 from motor import *
-
 
 #==============================================================================
 # Defining motor, environment, and simulation parameters
@@ -82,8 +77,8 @@ ATP = 0.002
 K_Pd = 0.04
 Pback = 2
 motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
-mrange = range(2,3)
-Frange = np.arange(0.003,0.012,0.003)
+mrange = range(2,4)
+Frange = np.arange(0.002,0.012,0.0005)
 Tend = 10
 
 #==============================================================================
