@@ -4,6 +4,8 @@ A toolbox for simulating intracellular cargo transport by a team of molecular mo
 ## How to use
 See motor_Example.py
 
+To open the UserGuide, clone the Motor-Toolbox reppsitory and open the html files in any browser.
+
 ## Citation 
 To cite SDA, please use the following publications:
 
