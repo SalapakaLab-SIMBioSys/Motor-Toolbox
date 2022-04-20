@@ -6,6 +6,43 @@ See motor_Example.py
 
 To open the UserGuide, clone the Motor-Toolbox reppsitory and open the html files in any browser.
 
+## Sample Code
+```python
+#==============================================================================
+# Importing packages
+#==============================================================================
+import numpy as np
+from motor import *
+
+#==============================================================================
+# Defining motor, environment, and simulation parameters
+#==============================================================================
+
+l0 = 110
+Kel = 0.32e-3
+ds = 8
+Fs = 0.006
+Pattach = 5
+motor_type = 'kinesin'
+Fload = 0.002
+m = 2
+tol = 1e-6
+ATP = 0.002
+K_Pd = 0.04
+Pback = 2
+motor = createMotor(l0, Kel, Fs, ATP, Pattach, motor_type)
+mrange = range(2,4)
+Frange = np.arange(0.002,0.012,0.0005)
+Tend = 10
+
+#==============================================================================
+# Getting runlength and velocity plots
+#==============================================================================
+
+fig1 = getVelVsFload(motor, mrange, Frange, save = False, tol = 1e-6)
+fig2 = getRunVsFload(motor, mrange, Frange, Tend, save = False, tol = 1e-6)
+```
+
 ## Example Plots
 
 ### For Kinesin
