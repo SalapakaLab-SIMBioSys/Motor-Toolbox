@@ -50,7 +50,7 @@ fig2 = getRunVsFload(motor, mrange, Frange, Tend, save = False, tol = 1e-6)
 
 
 ## Citation 
-To cite SDA, please use the following publications:
+To cite Motor Toolbox, please use the following publications:
 
 - Materassi, Donatello, Subhrajit Roychowdhury, Thomas Hays, and Murti Salapaka. "An exact approach for studying cargo transport by an ensemble of molecular motors." BMC biophysics 6, no. 1 (2013): 1-18.
 
